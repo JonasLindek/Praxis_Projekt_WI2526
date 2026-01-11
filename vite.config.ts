@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 
-// https://vite.dev/config/
 export default defineConfig({
+  base: "/Praxis_Projekt_WI2526/",
   worker: { format: "es" },
 })
