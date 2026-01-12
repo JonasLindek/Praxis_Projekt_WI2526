@@ -1,0 +1,15 @@
+{
+  "name": "compute",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "compute_bg.wasm",
+    "compute.js",
+    "compute.d.ts"
+  ],
+  "main": "compute.js",
+  "types": "compute.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
