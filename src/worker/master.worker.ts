@@ -6,6 +6,7 @@ type MasterRes =
   | { id: number; ok: true; result: any }
   | { id: number; ok: false; error: string };
 
+/*
 type ChildPayload =
   | { type: "calc"; data: number[] };
 
@@ -106,6 +107,7 @@ class ChildPool {
     if (next) this.runOnWorker(workerIndex, next);
   }
 }
+*/
 
 self.onmessage = async (ev: MessageEvent<MasterReq>) => {
   const msg = ev.data;

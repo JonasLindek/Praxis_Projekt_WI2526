@@ -1,4 +1,4 @@
-import init, * as wasm from "../wasm/compute/compute.js";
+import init, * as _wasm from "../wasm/compute/compute.js";
 import wasmUrl from "../wasm/compute/compute_bg.wasm?url";
 
 let initPromise: Promise<unknown> | null = null;
