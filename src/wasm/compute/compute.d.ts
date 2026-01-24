@@ -1,18 +1,19 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export function heavy(n: number): number;
-
-export function sum_u32(data: Uint32Array): bigint;
+export function compute_build_damage(input: any): any;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
-  readonly heavy: (a: number) => number;
-  readonly sum_u32: (a: number, b: number) => bigint;
-  readonly __wbindgen_externrefs: WebAssembly.Table;
+  readonly compute_build_damage: (a: any) => [number, number, number];
   readonly __wbindgen_malloc: (a: number, b: number) => number;
+  readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
+  readonly __wbindgen_exn_store: (a: number) => void;
+  readonly __externref_table_alloc: () => number;
+  readonly __wbindgen_externrefs: WebAssembly.Table;
+  readonly __externref_table_dealloc: (a: number) => void;
   readonly __wbindgen_start: () => void;
 }
 
