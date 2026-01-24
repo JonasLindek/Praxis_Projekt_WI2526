@@ -1,8 +1,8 @@
+type BuildInput = any;
 type PingPayload = { type: "ping" };
-type CalcPayload = { type: "calc"; data: number[]; poolSize: number };
-
-type Payload = PingPayload | CalcPayload;
-type Req = Payload & { id: number };
+type ComputePayload = { type: "compute_build_damage"; input: BuildInput };
+type Payload = PingPayload | ComputePayload;
+type Req = { id: number } & Payload;
 
 type Res =
   | { id: number; ok: true; result: any }
@@ -31,8 +31,8 @@ export class Client {
     return this.call({ type: "ping" });
   }
 
-  calculate(data: number[], poolSize: number) {
-    return this.call({ type: "calc", data, poolSize });
+  calculate(input: BuildInput) {
+    return this.call({ type: "compute_build_damage", input});
   }
 
   terminate() {

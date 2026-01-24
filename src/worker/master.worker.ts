@@ -1,6 +1,10 @@
+import init, * as wasm from "../wasm/compute/compute.js";
+import wasmUrl from "../wasm/compute/compute_bg.wasm?url";
+
+type BuildInput = any;
 type MasterReq =
   | { id: number; type: "ping" }
-  | { id: number; type: "calc"; data: number[]; poolSize: number };
+  | { id: number; type: "compute_build_damage"; input: BuildInput };
 
 type MasterRes =
   | { id: number; ok: true; result: any }
@@ -109,8 +113,17 @@ class ChildPool {
 }
 */
 
+let ready: Promise<void> | null = null;
+function ensureReady() {
+  if (!ready) {
+    ready = init(wasmUrl).then(() => {});
+  }
+  return ready;
+}
+
 self.onmessage = async (ev: MessageEvent<MasterReq>) => {
   const msg = ev.data;
+  await ensureReady();
 
   try {
     if (msg.type === "ping") {
@@ -119,9 +132,11 @@ self.onmessage = async (ev: MessageEvent<MasterReq>) => {
         return;
     }
 
-    if (msg.type === "calc") {
-        self.postMessage("No Implemented");
-        return;
+    if (msg.type === "compute_build_damage") {
+      const out = (wasm as any).compute_build_damage(msg.input);
+      const res: MasterRes = { id: msg.id, ok: true, result: out };
+      self.postMessage(res);
+      return;
     }
 
     throw new Error("Unknown master message");

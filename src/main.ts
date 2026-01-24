@@ -405,8 +405,15 @@ executeEl.onclick = async () => {
   outEl.textContent = "";
 
   try {
-    const r = await client.calculate([1, 2, 3], 4);
-    outEl.textContent = `${String(r)}`;
+    const input = {
+      character: selectedCharacter,
+      weapon: selectedWeapon,
+      attack: selectedAttack,
+      pictos: selectedPictos,
+      luminas: selectedLuminas
+    }
+    const r = await client.calculate(input);
+    outEl.textContent = JSON.stringify(r, null, 2);
   } catch (e: any) {
     outEl.textContent = `Error: ${e?.message ?? String(e)}`;
   }
