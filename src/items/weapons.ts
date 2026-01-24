@@ -5,20 +5,15 @@ const lunerim: Weapon = {
     name: "Lunerim",
     category: "WEAPON",
     character: "LUNE",
+    element: "FIRE",
     level: 33,
     power: 2421,
-    element: "FIRE",
     scaling: {
         vitality: "A",
         might: "NONE",
         agility: "NONE",
         defense: "NONE",
         luck: "S"
-    },
-    effects: {
-        level_4: "",
-        level_10: "",
-        level_20: ""
     }
 }
 
@@ -33,20 +28,15 @@ const maellum: Weapon = {
     name: "Maellum",
     category: "WEAPON",
     character: "MAELLE",
+    element: "PHYSICAL",
     level: 33,
     power: 3228,
-    element: "PHYSICAL",
     scaling: {
         vitality: "S",
         might: "NONE",
         agility: "NONE",
         defense: "NONE",
         luck: "NONE"
-    },
-    effects: {
-        level_4: "",
-        level_10: "",
-        level_20: ""
     }
 }
 
@@ -61,20 +51,15 @@ const scieleson: Weapon = {
     name: "Scieleson",
     category: "WEAPON",
     character: "SCIEL",
+    element: "PHYSICAL",
     level: 33,
     power: 3454,
-    element: "PHYSICAL",
     scaling: {
         vitality: "NONE",
         might: "NONE",
         agility: "S",
         defense: "NONE",
         luck: "A"
-    },
-    effects: {
-        level_4: "",
-        level_10: "",
-        level_20: ""
     }
 }
 
@@ -89,20 +74,15 @@ const verleso: Weapon = {
     name: "Verleso",
     category: "WEAPON",
     character: "VERSO",
+    element: "PHYSICAL",
     level: 33,
     power: 3454,
-    element: "PHYSICAL",
     scaling: {
         vitality: "S",
         might: "NONE",
         agility: "NONE",
         defense: "NONE",
         luck: "NONE"
-    },
-    effects: {
-        level_4: "",
-        level_10: "",
-        level_20: ""
     }
 }
 
@@ -117,20 +97,15 @@ const monocaro: Weapon = {
     name: "Monocaro",
     category: "WEAPON",
     character: "MONOCO",
+    element: "PHYSICAL",
     level: 33,
     power: 2744,
-    element: "PHYSICAL",
     scaling: {
         vitality: "NONE",
         might: "NONE",
         agility: "S",
         defense: "NONE",
         luck: "A"
-    },
-    effects: {
-        level_4: "Start battle in Balanced Mask.",
-        level_10: "Balanced Mask applies Powerful for 3 turns.",
-        level_20: "Critical hits deal 30% more damage while in Balanced Mask."
     }
 }
 

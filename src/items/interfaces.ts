@@ -1,4 +1,23 @@
 export type Category = "CHARACTER" | "WEAPON" | "ATTACK" | "PICTO" | "LUMINA";
+export type StatKey = "health" | "attack_power" | "speed" | "defense" | "critical_rate" | "ap" | "shield" | "defenceless" | "powerful";
+export type DamageTarget = "DAMAGE_ADD" | "DAMAGE_MUL";
+export type Stacking = "ADD" | "MUL";
+
+export type Effect = 
+| { kind: "ADD_STAT"; stat: StatKey; add: number }
+| { kind: "MUL_STAT"; stat: StatKey; mul: number }
+| { kind: "OVR_STAT"; stat: StatKey; ovr: number }
+| { kind: "ADD_BUFF"; target: DamageTarget; stacking: Stacking; buff: number };
+
+export type Condition =
+| { kind: "ALWAYS" }
+| { kind: "STAT_GTE"; stat: StatKey; value: number }
+| { kind: "STAT_LTE"; stat: StatKey; value: number }
+| { kind: "STAT_EQ"; stat: StatKey; value: number }
+| { kind: "HAS_ATTACK"; name: string }
+| { kind: "AND"; all: Condition[] }
+| { kind: "OR"; any: Condition[] }
+| { kind: "NOT"; cond: Condition};
 
 export interface SelectableBase { 
     name: string;
@@ -30,9 +49,9 @@ export interface Character extends SelectableBase {
 export interface Weapon extends SelectableBase {
     category: "WEAPON";
     character: "LUNE" | "MAELLE" | "SCIEL" | "VERSO" | "MONOCO";
+    element: "PHYSICAL" | "LIGHT" | "DARK" | "VOID" | "FIRE" | "ICE" | "EARTH" | "LIGHTNING";
     level: number
     power: number;
-    element: "PHYSICAL" | "LIGHT" | "DARK" | "VOID" | "FIRE" | "ICE" | "EARTH" | "LIGHTNING";
     scaling: {
         vitality: "NONE" | "D" | "C" | "B" | "A" | "S";
         might: "NONE" | "D" | "C" | "B" | "A" | "S";
@@ -40,11 +59,6 @@ export interface Weapon extends SelectableBase {
         defense: "NONE" | "D" | "C" | "B" | "A" | "S";
         luck: "NONE" | "D" | "C" | "B" | "A" | "S";
     };
-    effects: {
-        level_4: string;
-        level_10: string;
-        level_20: string;
-    }
 }
 
 export interface Attack extends SelectableBase {
@@ -70,6 +84,8 @@ export interface Lumina extends SelectableBase {
     category: "LUMINA";
     description: string;
     cost: number;
+    effect: Effect;
+    condition: Condition;
 }
 
 export type Selectable = Character | Weapon | Attack | Picto | Lumina;
