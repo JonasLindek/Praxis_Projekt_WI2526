@@ -20,7 +20,7 @@ const immolation: Attack = {
     category: "ATTACK",
     character: "LUNE",
     element: "FIRE",
-    power: 1, //noch unklar
+    power: 1,
     ap_cost: 2
 }
 
@@ -46,7 +46,7 @@ const offensive_switch: Attack = {
     category: "ATTACK",
     character: "MAELLE",
     element: "WEAPON",
-    power: 1,
+    power: 1.0,
     ap_cost: 1
 }
 
@@ -55,7 +55,7 @@ const piercee: Attack = {
     category: "ATTACK",
     character: "MAELLE",
     element: "PHYSICAL",
-    power: 1,
+    power: 2.2,
     ap_cost: 5
 }
 
@@ -64,7 +64,7 @@ const spark: Attack = {
     category: "ATTACK",
     character: "MAELLE",
     element: "FIRE",
-    power: 1,
+    power: 1.0,
     ap_cost: 3
 }
 

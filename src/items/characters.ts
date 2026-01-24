@@ -3,7 +3,6 @@ import type { Character } from "./interfaces";
 const lune: Character = {
     name: "Lune",
     category: "CHARACTER",
-    level: 1,
     attributes: {
         vitality: 1,
         might: 1,
@@ -26,7 +25,6 @@ const lune: Character = {
 const maelle: Character = {
     name: "Maelle",
     category: "CHARACTER",
-    level: 1,
     attributes: {
         vitality: 1,
         might: 1,
@@ -49,7 +47,6 @@ const maelle: Character = {
 const sciel: Character = {
     name: "Sciel",
     category: "CHARACTER",
-    level: 1,
     attributes: {
         vitality: 1,
         might: 1,
@@ -72,7 +69,6 @@ const sciel: Character = {
 const verso: Character = {
     name: "Verso",
     category: "CHARACTER",
-    level: 1,
     attributes: {
         vitality: 1,
         might: 1,
@@ -95,7 +91,6 @@ const verso: Character = {
 const monoco: Character = {
     name: "Monoco",
     category: "CHARACTER",
-    level: 1,
     attributes: {
         vitality: 1,
         might: 1,

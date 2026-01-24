@@ -1,4 +1,8 @@
 export type Category = "CHARACTER" | "WEAPON" | "ATTACK" | "PICTO" | "LUMINA";
+export type Char = "LUNE" | "MAELLE" | "SCIEL" | "VERSO" | "MONOCO";
+export type Element = "PHYSICAL" | "LIGHT" | "DARK" | "VOID" | "FIRE" | "ICE" | "EARTH" | "LIGHTNING";
+export type Scaling = "NONE" | "D" | "C" | "B" | "A" | "S";
+
 export type StatKey = "health" | "attack_power" | "speed" | "defense" | "critical_rate" | "ap" | "shield" | "defenceless" | "powerful";
 export type DamageTarget = "DAMAGE_ADD" | "DAMAGE_MUL";
 export type Stacking = "ADD" | "MUL";
@@ -26,7 +30,6 @@ export interface SelectableBase {
 
 export interface Character extends SelectableBase {
     category: "CHARACTER";
-    level: number;
     attributes: {
         vitality: number;
         might: number;
@@ -48,23 +51,22 @@ export interface Character extends SelectableBase {
 
 export interface Weapon extends SelectableBase {
     category: "WEAPON";
-    character: "LUNE" | "MAELLE" | "SCIEL" | "VERSO" | "MONOCO";
-    element: "PHYSICAL" | "LIGHT" | "DARK" | "VOID" | "FIRE" | "ICE" | "EARTH" | "LIGHTNING";
+    character: Char;
+    element: Element;
     level: number
     power: number;
     scaling: {
-        vitality: "NONE" | "D" | "C" | "B" | "A" | "S";
-        might: "NONE" | "D" | "C" | "B" | "A" | "S";
-        agility: "NONE" | "D" | "C" | "B" | "A" | "S";
-        defense: "NONE" | "D" | "C" | "B" | "A" | "S";
-        luck: "NONE" | "D" | "C" | "B" | "A" | "S";
+        vitality: Scaling;
+        agility: Scaling;
+        defense: Scaling;
+        luck: Scaling;
     };
 }
 
 export interface Attack extends SelectableBase {
     category: "ATTACK";
-    character: "ALL" | "LUNE" | "MAELLE" | "SCIEL" | "VERSO" | "MONOCO";
-    element: "WEAPON" | "PHYSICAL" | "LIGHT" | "DARK" | "VOID" | "FIRE" | "ICE" | "EARTH" | "LIGHTNING";
+    character: "ALL" | Char;
+    element: "WEAPON" | Element;
     power: number;
     ap_cost: number;
 }

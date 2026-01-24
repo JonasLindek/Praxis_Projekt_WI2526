@@ -16,7 +16,42 @@ app.innerHTML = `
     <div style="margin-top:12px">
       <details open>
         <summary><strong>Characters</strong></summary>
+        <span id="level">0</span>
         <span id="characters"></span>
+        <div class="stat-row">
+          <span class="stat-name">Vitality</span>
+          <span id="vitalityPoints" class="stat-points">0</span>
+          <button id="vitMinus" type="button">−</button>
+          <button id="vitPlus" type="button">+</button>
+        </div>
+      
+        <div class="stat-row">
+          <span class="stat-name">Might</span>
+          <span id="mightPoints" class="stat-points">0</span>
+          <button id="migMinus" type="button">−</button>
+          <button id="migPlus" type="button">+</button>
+        </div>
+      
+        <div class="stat-row">
+          <span class="stat-name">Agility</span>
+          <span id="agilityPoints" class="stat-points">0</span>
+          <button id="agiMinus" type="button">−</button>
+          <button id="agiPlus" type="button">+</button>
+        </div>
+      
+        <div class="stat-row">
+          <span class="stat-name">Defense</span>
+          <span id="defensePoints" class="stat-points">0</span>
+          <button id="defMinus" type="button">−</button>
+          <button id="defPlus" type="button">+</button>
+        </div>
+      
+        <div class="stat-row">
+          <span class="stat-name">Luck</span>
+          <span id="luckPoints" class="stat-points">0</span>
+          <button id="lucMinus" type="button">−</button>
+          <button id="lucPlus" type="button">+</button>
+        </div>
       </details>
 
       <details open>
@@ -61,6 +96,22 @@ app.innerHTML = `
 
 const statusEl = document.querySelector<HTMLParagraphElement>("#status")!;
 const charactersEl = document.querySelector<HTMLSpanElement>("#characters")!;
+const levelEl = document.querySelector<HTMLParagraphElement>("#level")!;
+const vitalityPointsEl = document.querySelector<HTMLParagraphElement>("#vitalityPoints")!;
+const vitMinusEl = document.querySelector<HTMLButtonElement>("#vitMinus")!;
+const vitPlusEl  = document.querySelector<HTMLButtonElement>("#vitPlus")!;
+const mightPointsEl = document.querySelector<HTMLParagraphElement>("#mightPoints")!;
+const migMinusEl = document.querySelector<HTMLButtonElement>("#migMinus")!;
+const migPlusEl  = document.querySelector<HTMLButtonElement>("#migPlus")!;
+const agilityPointsEl = document.querySelector<HTMLParagraphElement>("#agilityPoints")!;
+const agiMinusEl = document.querySelector<HTMLButtonElement>("#agiMinus")!;
+const agiPlusEl  = document.querySelector<HTMLButtonElement>("#agiPlus")!;
+const defensePointsEl = document.querySelector<HTMLParagraphElement>("#defensePoints")!;
+const defMinusEl = document.querySelector<HTMLButtonElement>("#defMinus")!;
+const defPlusEl  = document.querySelector<HTMLButtonElement>("#defPlus")!;
+const luckPointsEl = document.querySelector<HTMLParagraphElement>("#luckPoints")!;
+const lucMinusEl = document.querySelector<HTMLButtonElement>("#lucMinus")!;
+const lucPlusEl  = document.querySelector<HTMLButtonElement>("#lucPlus")!;
 const weaponsEl = document.querySelector<HTMLSpanElement>("#weapons")!;
 const attacksEl = document.querySelector<HTMLSpanElement>("#attacks")!;
 const pictosEl = document.querySelector<HTMLSpanElement>("#pictos")!;
@@ -86,6 +137,23 @@ let selectedLuminas: Lumina[] = [];
 
 function getCharacterKeyFromSelected(): string | null {
   return selectedCharacter?.name.toUpperCase() ?? null;
+}
+
+function getAttributePoints(): number {
+  if (!selectedCharacter) return 0;
+  let count = 
+    selectedCharacter.attributes.vitality
+    + selectedCharacter.attributes.might
+    + selectedCharacter.attributes.agility
+    + selectedCharacter.attributes.defense
+    + selectedCharacter.attributes.luck
+    - 5;
+  return count;
+}
+
+function canLevel(): boolean {
+  if (!selectedCharacter) return false;
+  return getAttributePoints() < 294;
 }
 
 function getWeaponsForSelectedCharacter(): Weapon[] {
@@ -176,6 +244,8 @@ function renderAll() {
       renderAll();
     }
   );
+  renderLevel();
+  renderAttributePoints();
 
   // Weapons
   const weaponList = getWeaponsForSelectedCharacter();
@@ -249,6 +319,23 @@ function renderSingleSelect<T>(
   }
 
   mount.appendChild(wrap);
+}
+
+function renderLevel() {
+  if (!selectedCharacter) return;
+  const used = getAttributePoints()
+  const level = used === 0 ? 1 : 1 + Math.ceil(used / 3);
+  const left = (level - 1) * 3 - used;
+  levelEl.textContent = `${level} (${left})`;
+}
+
+function renderAttributePoints() {
+  if (!selectedCharacter) return;
+  vitalityPointsEl.textContent = `${selectedCharacter?.attributes.vitality}`;
+  mightPointsEl.textContent = `${selectedCharacter?.attributes.might}`;
+  agilityPointsEl.textContent = `${selectedCharacter?.attributes.agility}`;
+  defensePointsEl.textContent = `${selectedCharacter?.attributes.defense}`;
+  luckPointsEl.textContent = `${selectedCharacter?.attributes.luck}`;
 }
 
 function renderPictos() {
@@ -372,22 +459,27 @@ function renderLuminaPoints() {
   luminaPointsEl.textContent = `${used}/${available} (+${bonus})`;
 }
 
-lpPlusEl.onclick = () => {
-  if (!selectedCharacter) return;
-  selectedCharacter.lumina_points_added += 1;
-  trimLuminasToFitPoints();
-  renderAll();
-};
+function bindStatButtons(
+  stat: keyof Character["attributes"],
+  minusBtn: HTMLButtonElement,
+  plusBtn: HTMLButtonElement,
+  { min = 1, max = 99, step = 1 } = {}
+) {
+  const clamp = (n: number) => Math.min(max, Math.max(min, n));
 
-lpMinusEl.onclick = () => {
-  if (!selectedCharacter) return;
-  selectedCharacter.lumina_points_added = Math.max(
-    0,
-    selectedCharacter.lumina_points_added - 1
-  );
-  trimLuminasToFitPoints();
-  renderAll();
-};
+  plusBtn.onclick = () => {
+    if (!selectedCharacter) return;
+    if (canLevel())
+      selectedCharacter.attributes[stat] = clamp(selectedCharacter.attributes[stat] + step);
+    renderAll();
+  };
+
+  minusBtn.onclick = () => {
+    if (!selectedCharacter) return;
+    selectedCharacter.attributes[stat] = clamp(selectedCharacter.attributes[stat] - step);
+    renderAll();
+  };
+}
 
 onCharacterChanged();
 renderAll();
@@ -417,6 +509,29 @@ executeEl.onclick = async () => {
   } catch (e: any) {
     outEl.textContent = `Error: ${e?.message ?? String(e)}`;
   }
+};
+
+bindStatButtons("vitality", vitMinusEl, vitPlusEl);
+bindStatButtons("might",    migMinusEl, migPlusEl);
+bindStatButtons("agility",  agiMinusEl, agiPlusEl);
+bindStatButtons("defense",  defMinusEl, defPlusEl);
+bindStatButtons("luck",     lucMinusEl, lucPlusEl);
+
+lpPlusEl.onclick = () => {
+  if (!selectedCharacter) return;
+  selectedCharacter.lumina_points_added += 1;
+  trimLuminasToFitPoints();
+  renderAll();
+};
+
+lpMinusEl.onclick = () => {
+  if (!selectedCharacter) return;
+  selectedCharacter.lumina_points_added = Math.max(
+    0,
+    selectedCharacter.lumina_points_added - 1
+  );
+  trimLuminasToFitPoints();
+  renderAll();
 };
 
 window.addEventListener("beforeunload", () => client.terminate());

@@ -136,7 +136,6 @@ pub struct Weapon {
 #[derive(Deserialize, Clone)]
 pub struct WeaponScaling {
     pub vitality: Scaling,
-    pub might: Scaling,
     pub agility: Scaling,
     pub defense: Scaling,
     pub luck: Scaling
