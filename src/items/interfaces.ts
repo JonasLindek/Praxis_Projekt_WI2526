@@ -8,6 +8,7 @@ export type DamageTarget = "DAMAGE_ADD" | "DAMAGE_MUL";
 export type Stacking = "ADD" | "MUL";
 
 export type Effect = 
+| { kind: "NONE" }
 | { kind: "ADD_STAT"; stat: StatKey; add: number }
 | { kind: "MUL_STAT"; stat: StatKey; mul: number }
 | { kind: "OVR_STAT"; stat: StatKey; ovr: number }
@@ -15,6 +16,7 @@ export type Effect =
 
 export type Condition =
 | { kind: "ALWAYS" }
+| { kind: "NEVER" }
 | { kind: "STAT_GTE"; stat: StatKey; value: number }
 | { kind: "STAT_LTE"; stat: StatKey; value: number }
 | { kind: "STAT_EQ"; stat: StatKey; value: number }
@@ -73,6 +75,7 @@ export interface Attack extends SelectableBase {
 
 export interface Picto extends SelectableBase {
     category: "PICTO";
+    level: Number;
     attribute_buff: {
         health: number;
         speed: number;

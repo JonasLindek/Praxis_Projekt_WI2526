@@ -17,7 +17,7 @@ const lune: Character = {
         defense: 0,
         critical_rate: 5
     },
-    lumina_points: 100,
+    lumina_points: 1,
     lumina_points_added: 0,
     ap: 3
 }

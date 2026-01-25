@@ -54,6 +54,9 @@ pub enum Scaling {
 #[derive(Deserialize, Clone)]
 #[serde(tag="kind")]
 pub enum Effect {
+    #[serde(rename="NONE")]
+    None {},
+
     #[serde(rename="ADD_STAT")]
     AddStat { stat: StatKey, add: f32 },
 
@@ -72,6 +75,9 @@ pub enum Effect {
 pub enum Condition {
     #[serde(rename="ALWAYS")]
     Always,
+
+    #[serde(rename="NEVER")]
+    Never,
 
     #[serde(rename="STAT_GTE")]
     StatGte { stat: StatKey, value: f32 },
@@ -99,7 +105,6 @@ pub enum Condition {
 #[derive(Deserialize)]
 pub struct Character {
     pub name: String,
-    pub level: f32,
     pub attributes: CharacterAttributes,
     pub stats: CharacterStats,
     pub lumina_points: f32,
@@ -249,10 +254,12 @@ pub fn compute_build_damage(input: JsValue) -> Result<JsValue, JsValue> {
         }
     }
 
-    let skill_multiplier = input.attack.power / 100.0;
+    let weapon_power = input.weapon.power;
+    let attack_power = st.attack_power + weapon_power;
+    let skill_multiplier = input.attack.power;
     let crit_factor = 1.0 + (st.critical_rate.min(100.0) / 100.0) * 0.5;
     dmg_add_sum = 1.0 + (dmg_add_sum / 100.0);
-    let damage = st.attack_power * skill_multiplier * crit_factor * dmg_add_sum * dmg_mul_factor * st.defenceless * st.powerful;
+    let damage = attack_power * skill_multiplier * crit_factor * dmg_add_sum * dmg_mul_factor;
 
     let out = BuildOutput {
         damage,
@@ -270,6 +277,7 @@ pub fn compute_build_damage(input: JsValue) -> Result<JsValue, JsValue> {
 //EFFECT APPLICATION
 fn apply_effect(effect: &Effect, st: &mut FinalStats, dmg_add_sum: &mut f32, dmg_mul_factor: &mut f32) {
     match effect {
+        Effect::None { } => { }
         Effect::AddStat { stat, add } => {
             let v = get_stat_mut(st, *stat);
             *v += *add;
@@ -313,6 +321,7 @@ fn get_stat_mut(st: &mut FinalStats, key: StatKey) -> &mut f32 {
 impl Condition {
     pub fn eval(&self, input: &BuildInput, st: &FinalStats) -> bool {
         match self {
+            Condition::Never => false,
             Condition::Always => true,
             Condition::StatGte { stat, value } => get_stat(st, stat) >= *value,
             Condition::StatLte { stat, value } => get_stat(st, stat) <= *value,

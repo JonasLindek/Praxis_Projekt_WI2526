@@ -16,38 +16,33 @@ app.innerHTML = `
     <div style="margin-top:12px">
       <details open>
         <summary><strong>Characters</strong></summary>
-        <span id="level">0</span>
         <span id="characters"></span>
+        <span id="level">0</span>
         <div class="stat-row">
-          <span class="stat-name">Vitality</span>
           <span id="vitalityPoints" class="stat-points">0</span>
           <button id="vitMinus" type="button">−</button>
           <button id="vitPlus" type="button">+</button>
         </div>
       
         <div class="stat-row">
-          <span class="stat-name">Might</span>
           <span id="mightPoints" class="stat-points">0</span>
           <button id="migMinus" type="button">−</button>
           <button id="migPlus" type="button">+</button>
         </div>
       
         <div class="stat-row">
-          <span class="stat-name">Agility</span>
           <span id="agilityPoints" class="stat-points">0</span>
           <button id="agiMinus" type="button">−</button>
           <button id="agiPlus" type="button">+</button>
         </div>
       
         <div class="stat-row">
-          <span class="stat-name">Defense</span>
           <span id="defensePoints" class="stat-points">0</span>
           <button id="defMinus" type="button">−</button>
           <button id="defPlus" type="button">+</button>
         </div>
       
         <div class="stat-row">
-          <span class="stat-name">Luck</span>
           <span id="luckPoints" class="stat-points">0</span>
           <button id="lucMinus" type="button">−</button>
           <button id="lucPlus" type="button">+</button>
@@ -253,7 +248,7 @@ function renderAll() {
     weaponsEl,
     weaponList,
     selectedWeapon,
-    (w) => w.name,
+    (w) => `${w.name} | lvl ${w.level}`,
     (w) => {
       selectedWeapon = w;
       renderAll();
@@ -266,7 +261,7 @@ function renderAll() {
     attacksEl,
     attackList,
     selectedAttack,
-    (a) => a.name,
+    (a) => `${a.name} | ${a.ap_cost}`,
     (a) => {
       selectedAttack = a;
       renderAll();
@@ -326,16 +321,16 @@ function renderLevel() {
   const used = getAttributePoints()
   const level = used === 0 ? 1 : 1 + Math.ceil(used / 3);
   const left = (level - 1) * 3 - used;
-  levelEl.textContent = `${level} (${left})`;
+  levelEl.textContent = `Level: ${level} (${left})`;
 }
 
 function renderAttributePoints() {
   if (!selectedCharacter) return;
-  vitalityPointsEl.textContent = `${selectedCharacter?.attributes.vitality}`;
-  mightPointsEl.textContent = `${selectedCharacter?.attributes.might}`;
-  agilityPointsEl.textContent = `${selectedCharacter?.attributes.agility}`;
-  defensePointsEl.textContent = `${selectedCharacter?.attributes.defense}`;
-  luckPointsEl.textContent = `${selectedCharacter?.attributes.luck}`;
+  vitalityPointsEl.textContent = `Vitality: ${selectedCharacter?.attributes.vitality}`;
+  mightPointsEl.textContent = `Might: ${selectedCharacter?.attributes.might}`;
+  agilityPointsEl.textContent = `Agility: ${selectedCharacter?.attributes.agility}`;
+  defensePointsEl.textContent = `Defense: ${selectedCharacter?.attributes.defense}`;
+  luckPointsEl.textContent = `Luck: ${selectedCharacter?.attributes.luck}`;
 }
 
 function renderPictos() {
@@ -353,7 +348,7 @@ function renderPictos() {
 
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.textContent = p.name;
+    btn.textContent = `${p.name}| lvl ${p.level}`;
 
     btn.style.padding = "8px 12px";
     btn.style.borderRadius = "10px";
@@ -412,7 +407,7 @@ function renderLuminas() {
 
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.textContent = `${l.name} (${l.cost})`;
+    btn.textContent = `${l.name} | ${l.cost}`;
 
     btn.style.padding = "8px 12px";
     btn.style.borderRadius = "10px";
