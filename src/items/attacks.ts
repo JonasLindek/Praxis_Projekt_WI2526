@@ -7,6 +7,7 @@ const base_attack: Attack = {
     character: "ALL",
     element: "WEAPON",
     power: 1,
+    hits: 1,
     ap_cost: 0
 }
 
@@ -21,6 +22,7 @@ const crippling_tsunami: Attack = {
     character: "LUNE",
     element: "ICE",
     power: 2.5,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -30,6 +32,7 @@ const crustal_crush: Attack = {
     character: "LUNE",
     element: "EARTH",
     power: 4.5,
+    hits: 1,
     ap_cost: 7
 }
 
@@ -39,6 +42,7 @@ const earth_rising: Attack = {
     character: "LUNE",
     element: "EARTH",
     power: 1.2,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -48,6 +52,7 @@ const electrify: Attack = {
     character: "LUNE",
     element: "LIGHTNING",
     power: 0.6,
+    hits: 1,
     ap_cost: 1
 }
 
@@ -57,6 +62,7 @@ const elemental_genesis: Attack = {
     character: "LUNE",
     element: "WEAPON",
     power: 24.0,
+    hits: 1,
     ap_cost: 4
 }
 
@@ -66,6 +72,7 @@ const elemental_trick: Attack = {
     character: "LUNE",
     element: "EARTH",
     power: 1.2,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -75,6 +82,7 @@ const fire_rage: Attack = {
     character: "LUNE",
     element: "FIRE",
     power: 2.5,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -84,6 +92,7 @@ const healing_light: Attack = {
     character: "LUNE",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -93,6 +102,7 @@ const hell: Attack = {
     character: "LUNE",
     element: "FIRE",
     power: 10.0,
+    hits: 1,
     ap_cost: 9
 }
 
@@ -102,6 +112,7 @@ const ice_lance: Attack = {
     character: "LUNE",
     element: "ICE",
     power: 1.4,
+    hits: 1,
     ap_cost: 4
 }
 
@@ -111,6 +122,7 @@ const immolation: Attack = {
     character: "LUNE",
     element: "FIRE",
     power: 0.7,
+    hits: 1,
     ap_cost: 2
 }
 
@@ -120,6 +132,7 @@ const lightning_dance: Attack = {
     character: "LUNE",
     element: "LIGHTNING",
     power: 3.6,
+    hits: 1,
     ap_cost: 7
 }
 
@@ -129,6 +142,7 @@ const mayhem: Attack = {
     character: "LUNE",
     element: "WEAPON",
     power: 2.4,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -138,6 +152,7 @@ const rebirth: Attack = {
     character: "LUNE",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -147,6 +162,7 @@ const revitalization: Attack = {
     character: "LUNE",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -156,6 +172,7 @@ const rock_slide: Attack = {
     character: "LUNE",
     element: "EARTH",
     power: 2.5,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -165,6 +182,7 @@ const storm_caller: Attack = {
     character: "LUNE",
     element: "LIGHTNING",
     power: 0.6,
+    hits: 1,
     ap_cost: 6
 }
 
@@ -174,6 +192,7 @@ const terraquake: Attack = {
     character: "LUNE",
     element: "EARTH",
     power: 1.5,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -183,6 +202,7 @@ const thermal_transfer: Attack = {
     character: "LUNE",
     element: "ICE",
     power: 1.0,
+    hits: 1,
     ap_cost: 2
 }
 
@@ -192,6 +212,7 @@ const thunderfall: Attack = {
     character: "LUNE",
     element: "LIGHTNING",
     power: 1.8,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -201,6 +222,7 @@ const typhoon: Attack = {
     character: "LUNE",
     element: "ICE",
     power: 2.5,
+    hits: 1,
     ap_cost: 8
 }
 
@@ -210,6 +232,7 @@ const wildfire: Attack = {
     character: "LUNE",
     element: "FIRE",
     power: 1.25,
+    hits: 1,
     ap_cost: 4
 }
 
@@ -247,6 +270,7 @@ const breaking_rules: Attack = {
     character: "MAELLE",
     element: "PHYSICAL",
     power: 1.5,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -256,6 +280,7 @@ const burning_canvas: Attack = {
     character: "MAELLE",
     element: "VOID",
     power: 2.0,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -265,6 +290,7 @@ const combustion: Attack = {
     character: "MAELLE",
     element: "PHYSICAL",
     power: 1.6,
+    hits: 1,
     ap_cost: 4
 }
 
@@ -274,6 +300,7 @@ const degagement: Attack = {
     character: "MAELLE",
     element: "FIRE",
     power: 1.0,
+    hits: 1,
     ap_cost: 2
 }
 
@@ -283,6 +310,7 @@ const egide: Attack = {
     character: "MAELLE",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -292,6 +320,7 @@ const fencers_flurry: Attack = {
     character: "MAELLE",
     element: "WEAPON",
     power: 1.4,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -301,6 +330,7 @@ const fleuret_fury: Attack = {
     character: "MAELLE",
     element: "PHYSICAL",
     power: 2.4,
+    hits: 1,
     ap_cost: 6
 }
 
@@ -310,6 +340,7 @@ const guard_down: Attack = {
     character: "MAELLE",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -319,6 +350,7 @@ const guard_up: Attack = {
     character: "MAELLE",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -328,6 +360,7 @@ const gustaves_homage: Attack = {
     character: "MAELLE",
     element: "LIGHTNING",
     power: 4.5,
+    hits: 1,
     ap_cost: 8
 }
 
@@ -337,6 +370,7 @@ const last_chance: Attack = {
     character: "MAELLE",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 1
 }
 
@@ -346,6 +380,7 @@ const mezzo_forte: Attack = {
     character: "MAELLE",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 1
 }
 
@@ -355,6 +390,7 @@ const momentum_strike: Attack = {
     character: "MAELLE",
     element: "WEAPON",
     power: 3.5,
+    hits: 1,
     ap_cost: 7
 }
 
@@ -364,6 +400,7 @@ const offensive_switch: Attack = {
     character: "MAELLE",
     element: "WEAPON",
     power: 1.0,
+    hits: 1,
     ap_cost: 1
 }
 
@@ -373,6 +410,7 @@ const payback: Attack = {
     character: "MAELLE",
     element: "PHYSICAL",
     power: 5.0,
+    hits: 1,
     ap_cost: 9
 }
 
@@ -382,6 +420,7 @@ const percee: Attack = {
     character: "MAELLE",
     element: "PHYSICAL",
     power: 2.2,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -391,6 +430,7 @@ const phantom_strike: Attack = {
     character: "MAELLE",
     element: "VOID",
     power: 2.8,
+    hits: 1,
     ap_cost: 7
 }
 
@@ -400,6 +440,7 @@ const pyrolyse: Attack = {
     character: "MAELLE",
     element: "FIRE",
     power: 5.0001,
+    hits: 1,
     ap_cost: 9
 }
 
@@ -409,6 +450,7 @@ const rain_of_fire: Attack = {
     character: "MAELLE",
     element: "FIRE",
     power: 1.6,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -418,6 +460,7 @@ const revenge: Attack = {
     character: "MAELLE",
     element: "FIRE",
     power: 1.2,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -427,6 +470,7 @@ const spark: Attack = {
     character: "MAELLE",
     element: "FIRE",
     power: 1.0,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -436,6 +480,7 @@ const stendhal: Attack = {
     character: "MAELLE",
     element: "VOID",
     power: 15.0,
+    hits: 1,
     ap_cost: 8
 }
 
@@ -445,6 +490,7 @@ const swift_stride: Attack = {
     character: "MAELLE",
     element: "PHYSICAL",
     power: 1.0,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -454,6 +500,7 @@ const sword_ballet: Attack = {
     character: "MAELLE",
     element: "WEAPON",
     power: 3.75,
+    hits: 1,
     ap_cost: 9
 }
 
@@ -493,6 +540,7 @@ const all_set: Attack = {
     character: "SCIEL",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 6
 }
 
@@ -502,6 +550,7 @@ const bad_omen: Attack = {
     character: "SCIEL",
     element: "DARK",
     power: 2.0,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -511,6 +560,7 @@ const card_weaver: Attack = {
     character: "SCIEL",
     element: "PHYSICAL",
     power: 2.0,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -520,6 +570,7 @@ const dark_cleansing: Attack = {
     character: "SCIEL",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 0
 }
 
@@ -529,6 +580,7 @@ const dark_wave: Attack = {
     character: "SCIEL",
     element: "DARK",
     power: 3.0,
+    hits: 1,
     ap_cost: 6
 }
 
@@ -538,6 +590,7 @@ const delaying_slash: Attack = {
     character: "SCIEL",
     element: "WEAPON",
     power: 3.0,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -547,6 +600,7 @@ const final_path: Attack = {
     character: "SCIEL",
     element: "DARK",
     power: 7.5,
+    hits: 1,
     ap_cost: 9
 }
 
@@ -556,6 +610,7 @@ const firing_shadow: Attack = {
     character: "SCIEL",
     element: "DARK",
     power: 1.5,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -565,6 +620,7 @@ const focused_foretell: Attack = {
     character: "SCIEL",
     element: "PHYSICAL",
     power: 1.0,
+    hits: 1,
     ap_cost: 2
 }
 
@@ -574,6 +630,7 @@ const fortunes_fury: Attack = {
     character: "SCIEL",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -583,6 +640,7 @@ const grim_harvest: Attack = {
     character: "SCIEL",
     element: "DARK",
     power: 3.0,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -592,6 +650,7 @@ const harvest: Attack = {
     character: "SCIEL",
     element: "WEAPON",
     power: 2.0,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -601,6 +660,7 @@ const intervention: Attack = {
     character: "SCIEL",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 6
 }
 
@@ -610,6 +670,7 @@ const marking_card: Attack = {
     character: "SCIEL",
     element: "DARK",
     power: 2.0,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -619,6 +680,7 @@ const our_sacrifice: Attack = {
     character: "SCIEL",
     element: "DARK",
     power: 2.0,
+    hits: 1,
     ap_cost: 4
 }
 
@@ -628,6 +690,7 @@ const phantom_blade: Attack = {
     character: "SCIEL",
     element: "DARK",
     power: 3.0,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -637,6 +700,7 @@ const plentiful_harvest: Attack = {
     character: "SCIEL",
     element: "PHYSICAL",
     power: 2.0,
+    hits: 1,
     ap_cost: 4
 }
 
@@ -646,6 +710,7 @@ const rush: Attack = {
     character: "SCIEL",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -655,6 +720,7 @@ const sealed_fate: Attack = {
     character: "SCIEL",
     element: "WEAPON",
     power: 2.0,
+    hits: 1,
     ap_cost: 4
 }
 
@@ -664,6 +730,7 @@ const searing_bond: Attack = {
     character: "SCIEL",
     element: "DARK",
     power: 2.5,
+    hits: 1,
     ap_cost: 4
 }
 
@@ -673,6 +740,7 @@ const spectral_sweep: Attack = {
     character: "SCIEL",
     element: "WEAPON",
     power: 1.0,
+    hits: 1,
     ap_cost: 7
 }
 
@@ -682,6 +750,7 @@ const twilight_dance: Attack = {
     character: "SCIEL",
     element: "DARK",
     power: 6.0,
+    hits: 1,
     ap_cost: 9
 }
 
@@ -691,6 +760,7 @@ const twilight_slash: Attack = {
     character: "SCIEL",
     element: "DARK",
     power: 1.0,
+    hits: 1,
     ap_cost: 2
 }
 
@@ -729,6 +799,7 @@ const ascending_assault: Attack = {
     character: "VERSO",
     element: "WEAPON",
     power: 2.5,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -738,6 +809,7 @@ const assault_zero: Attack = {
     character: "VERSO",
     element: "PHYSICAL",
     power: 1.25,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -747,6 +819,7 @@ const berserk_slash: Attack = {
     character: "VERSO",
     element: "PHYSICAL",
     power: 0.6,
+    hits: 1,
     ap_cost: 4
 }
 
@@ -756,6 +829,7 @@ const blitz: Attack = {
     character: "VERSO",
     element: "PHYSICAL",
     power: 1.5,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -765,6 +839,7 @@ const burden: Attack = {
     character: "VERSO",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 1
 }
 
@@ -774,6 +849,7 @@ const defiant_strike: Attack = {
     character: "VERSO",
     element: "WEAPON",
     power: 4.0,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -783,6 +859,7 @@ const end_bringer: Attack = {
     character: "VERSO",
     element: "PHYSICAL",
     power: 7.2,
+    hits: 1,
     ap_cost: 9
 }
 
@@ -792,6 +869,7 @@ const follow_up: Attack = {
     character: "VERSO",
     element: "LIGHT",
     power: 2.0,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -801,6 +879,7 @@ const from_fire: Attack = {
     character: "VERSO",
     element: "WEAPON",
     power: 1.875,
+    hits: 1,
     ap_cost: 4
 }
 
@@ -810,6 +889,7 @@ const leadership: Attack = {
     character: "VERSO",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -819,6 +899,7 @@ const light_holder: Attack = {
     character: "VERSO",
     element: "LIGHT",
     power: 1.5,
+    hits: 1,
     ap_cost: 4
 }
 
@@ -828,6 +909,7 @@ const marking_shot: Attack = {
     character: "VERSO",
     element: "WEAPON",
     power: 1.0,
+    hits: 1,
     ap_cost: 2
 }
 
@@ -837,6 +919,7 @@ const overload: Attack = {
     character: "VERSO",
     element: "PHYSICAL",
     power: 0.0,
+    hits: 1,
     ap_cost: 0
 }
 
@@ -846,6 +929,7 @@ const perfect_break: Attack = {
     character: "VERSO",
     element: "LIGHT",
     power: 5.0,
+    hits: 1,
     ap_cost: 7
 }
 
@@ -855,6 +939,7 @@ const perfect_recovery: Attack = {
     character: "VERSO",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -864,6 +949,7 @@ const phantom_stars: Attack = {
     character: "VERSO",
     element: "LIGHT",
     power: 3.5,
+    hits: 1,
     ap_cost: 9
 }
 
@@ -873,6 +959,7 @@ const powerful: Attack = {
     character: "VERSO",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -882,6 +969,7 @@ const purification: Attack = {
     character: "VERSO",
     element: "LIGHT",
     power: 2.5,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -891,6 +979,7 @@ const quick_strike: Attack = {
     character: "VERSO",
     element: "PHYSICAL",
     power: 1.0,
+    hits: 1,
     ap_cost: 2
 }
 
@@ -900,6 +989,7 @@ const radiant_slash: Attack = {
     character: "VERSO",
     element: "LIGHT",
     power: 0.7,
+    hits: 1,
     ap_cost: 2
 }
 
@@ -909,6 +999,7 @@ const speed_burst: Attack = {
     character: "VERSO",
     element: "LIGHT",
     power: 2.5,
+    hits: 1,
     ap_cost: 6
 }
 
@@ -918,6 +1009,7 @@ const steeled_strike: Attack = {
     character: "VERSO",
     element: "PHYSICAL",
     power: 6.5,
+    hits: 1,
     ap_cost: 9
 }
 
@@ -927,6 +1019,7 @@ const strike_storm: Attack = {
     character: "VERSO",
     element: "WEAPON",
     power: 4.9,
+    hits: 1,
     ap_cost: 7
 }
 
@@ -965,6 +1058,7 @@ const abbest_wind: Attack = {
     character: "MONOCO",
     element: "PHYSICAL",
     power: 1.0,
+    hits: 1,
     ap_cost: 2
 }
 
@@ -974,6 +1068,7 @@ const aberration_light: Attack = {
     character: "MONOCO",
     element: "LIGHT",
     power: 3.0,
+    hits: 1,
     ap_cost: 7
 }
 
@@ -983,6 +1078,7 @@ const ballet_charm: Attack = {
     character: "MONOCO",
     element: "LIGHT",
     power: 0.8,
+    hits: 1,
     ap_cost: 2
 }
 
@@ -992,6 +1088,7 @@ const benissuer_mortar: Attack = {
     character: "MONOCO",
     element: "ICE",
     power: 2.4,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -1001,6 +1098,7 @@ const bouchelier_fortify: Attack = {
     character: "MONOCO",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -1010,6 +1108,7 @@ const braseleur_smash: Attack = {
     character: "MONOCO",
     element: "FIRE",
     power: 1.8,
+    hits: 1,
     ap_cost: 4
 }
 
@@ -1019,6 +1118,7 @@ const bruler_bash: Attack = {
     character: "MONOCO",
     element: "PHYSICAL",
     power: 2.4,
+    hits: 1,
     ap_cost: 4
 }
 
@@ -1028,6 +1128,7 @@ const chalier_combo: Attack = {
     character: "MONOCO",
     element: "PHYSICAL",
     power: 3.6,
+    hits: 1,
     ap_cost: 7
 }
 
@@ -1037,6 +1138,7 @@ const chapelier_slash: Attack = {
     character: "MONOCO",
     element: "PHYSICAL",
     power: 2.4,
+    hits: 1,
     ap_cost: 7
 }
 
@@ -1046,6 +1148,7 @@ const chevaliere_ice: Attack = {
     character: "MONOCO",
     element: "ICE",
     power: 1.8,
+    hits: 1,
     ap_cost: 6
 }
 
@@ -1055,6 +1158,7 @@ const chevaliere_piercing: Attack = {
     character: "MONOCO",
     element: "PHYSICAL",
     power: 1.8,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -1064,6 +1168,7 @@ const chevaliere_thrusts: Attack = {
     character: "MONOCO",
     element: "PHYSICAL",
     power: 1.8,
+    hits: 1,
     ap_cost: 7
 }
 
@@ -1073,6 +1178,7 @@ const clair_enfeeble: Attack = {
     character: "MONOCO",
     element: "LIGHT",
     power: 1.75,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -1082,6 +1188,7 @@ const contorsionniste_blast: Attack = {
     character: "MONOCO",
     element: "PHYSICAL",
     power: 2.5,
+    hits: 1,
     ap_cost: 6
 }
 
@@ -1091,6 +1198,7 @@ const creation_void: Attack = {
     character: "MONOCO",
     element: "VOID",
     power: 6.0,
+    hits: 1,
     ap_cost: 9
 }
 
@@ -1100,6 +1208,7 @@ const cruler_barrier: Attack = {
     character: "MONOCO",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 4
 }
 
@@ -1109,6 +1218,7 @@ const cultist_blood: Attack = {
     character: "MONOCO",
     element: "DARK",
     power: 0.9,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -1118,6 +1228,7 @@ const cultists_slashes: Attack = {
     character: "MONOCO",
     element: "DARK",
     power: 2.1,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -1127,6 +1238,7 @@ const danseusse_waltz: Attack = {
     character: "MONOCO",
     element: "FIRE",
     power: 3.9,
+    hits: 1,
     ap_cost: 8
 }
 
@@ -1136,6 +1248,7 @@ const demineur_thunder: Attack = {
     character: "MONOCO",
     element: "LIGHTNING",
     power: 0.1,
+    hits: 1,
     ap_cost: 2
 }
 
@@ -1145,6 +1258,7 @@ const duallist_storm: Attack = {
     character: "MONOCO",
     element: "PHYSICAL",
     power: 6.0,
+    hits: 1,
     ap_cost: 8
 }
 
@@ -1154,6 +1268,7 @@ const echassier_stabs: Attack = {
     character: "MONOCO",
     element: "PHYSICAL",
     power: 3.0,
+    hits: 1,
     ap_cost: 4
 }
 
@@ -1163,6 +1278,7 @@ const eveque_spear: Attack = {
     character: "MONOCO",
     element: "EARTH",
     power: 4.0,
+    hits: 1,
     ap_cost: 6
 }
 
@@ -1172,6 +1288,7 @@ const gault_fury: Attack = {
     character: "MONOCO",
     element: "PHYSICAL",
     power: 1.6,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -1181,6 +1298,7 @@ const glaise_earthquakes: Attack = {
     character: "MONOCO",
     element: "EARTH",
     power: 9.0,
+    hits: 1,
     ap_cost: 4
 }
 
@@ -1190,6 +1308,7 @@ const grosse_tete_whack: Attack = {
     character: "MONOCO",
     element: "PHYSICAL",
     power: 3.0,
+    hits: 1,
     ap_cost: 6
 }
 
@@ -1199,6 +1318,7 @@ const hexga_crush: Attack = {
     character: "MONOCO",
     element: "EARTH",
     power: 2.4,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -1208,6 +1328,7 @@ const jar_lampstorm: Attack = {
     character: "MONOCO",
     element: "PHYSICAL",
     power: 2.0,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -1217,6 +1338,7 @@ const lampmaster_light: Attack = {
     character: "MONOCO",
     element: "LIGHT",
     power: 2.0,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -1226,6 +1348,7 @@ const lancelier_impale: Attack = {
     character: "MONOCO",
     element: "ICE",
     power: 1.2,
+    hits: 1,
     ap_cost: 2
 }
 
@@ -1235,6 +1358,7 @@ const luster_slices: Attack = {
     character: "MONOCO",
     element: "PHYSICAL",
     power: 1.8,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -1244,6 +1368,7 @@ const moissonneusse_vendage: Attack = {
     character: "MONOCO",
     element: "PHYSICAL",
     power: 3.0,
+    hits: 1,
     ap_cost: 5
 }
 
@@ -1253,6 +1378,7 @@ const obscur_sword: Attack = {
     character: "MONOCO",
     element: "DARK",
     power: 3.0,
+    hits: 1,
     ap_cost: 6
 }
 
@@ -1262,6 +1388,7 @@ const orphelin_cheers: Attack = {
     character: "MONOCO",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -1271,6 +1398,7 @@ const perelin_heal: Attack = {
     character: "MONOCO",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -1280,6 +1408,7 @@ const portier_crash: Attack = {
     character: "MONOCO",
     element: "PHYSICAL",
     power: 5.0,
+    hits: 1,
     ap_cost: 8
 }
 
@@ -1289,6 +1418,7 @@ const potier_energy: Attack = {
     character: "MONOCO",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 0
 }
 
@@ -1298,6 +1428,7 @@ const ramasseur_bonk: Attack = {
     character: "MONOCO",
     element: "DARK",
     power: 0.8,
+    hits: 1,
     ap_cost: 2
 }
 
@@ -1307,6 +1438,7 @@ const rocher_hammering: Attack = {
     character: "MONOCO",
     element: "PHYSICAL",
     power: 1.6,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -1316,6 +1448,7 @@ const sakapatate_estoc: Attack = {
     character: "MONOCO",
     element: "LIGHTNING",
     power: 1.5,
+    hits: 1,
     ap_cost: 3
 }
 
@@ -1325,6 +1458,7 @@ const sakapatate_explosion: Attack = {
     character: "MONOCO",
     element: "LIGHTNING",
     power: 1.5,
+    hits: 1,
     ap_cost: 4
 }
 
@@ -1334,6 +1468,7 @@ const sakapatate_fire: Attack = {
     character: "MONOCO",
     element: "FIRE",
     power: 4.5,
+    hits: 1,
     ap_cost: 9
 }
 
@@ -1343,6 +1478,7 @@ const sakapatate_slam: Attack = {
     character: "MONOCO",
     element: "PHYSICAL",
     power: 3.0,
+    hits: 1,
     ap_cost: 7
 }
 
@@ -1352,6 +1488,7 @@ const sapling_absorption: Attack = {
     character: "MONOCO",
     element: "DARK",
     power: 3.0,
+    hits: 1,
     ap_cost: 6
 }
 
@@ -1361,6 +1498,7 @@ const stalact_punches: Attack = {
     character: "MONOCO",
     element: "ICE",
     power: 1.8,
+    hits: 1,
     ap_cost: 4
 }
 
@@ -1370,6 +1508,7 @@ const troubadour_trumpet: Attack = {
     character: "MONOCO",
     element: "WEAPON",
     power: 0.0,
+    hits: 1,
     ap_cost: 3
 }
 

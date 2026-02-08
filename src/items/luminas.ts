@@ -1,12 +1,15 @@
 import type { Lumina } from "./interfaces";
-
+//priority noch genauer
 const accelerating_heal: Lumina = {
     name: "Accelerating Heal",
     category: "LUMINA",
     description: "Healing an ally also applies Rush for 1 turn",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const accelerating_last_stand: Lumina = {
@@ -14,17 +17,23 @@ const accelerating_last_stand: Lumina = {
     category: "LUMINA",
     description: "Gain Rush if fighting alone.",
     cost: 3,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_BUFF", buff: "rush", turns: 9999 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const accelerating_shots: Lumina = {
     name: "Accelerating Shots",
     category: "LUMINA",
-    description: "20% change to gain Rush on Free Aim shot.",
+    description: "20% chance to gain Rush on Free Aim shot.",
     cost: 3,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const accelerating_tint: Lumina = {
@@ -32,8 +41,11 @@ const accelerating_tint: Lumina = {
     category: "LUMINA",
     description: "Healing Tints also apply Rush",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const aegis_revival: Lumina = {
@@ -41,8 +53,11 @@ const aegis_revival: Lumina = {
     category: "LUMINA",
     description: "+1 Shield on being revived.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STATUS_EFFECT", target: "PLAYER", status: "shield", turns: 1 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_REVIVE" }
+    }]
 }
 
 const anti_blight: Lumina = {
@@ -50,8 +65,11 @@ const anti_blight: Lumina = {
     category: "LUMINA",
     description: "Immune to Blight.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const anti_burn: Lumina = {
@@ -59,8 +77,11 @@ const anti_burn: Lumina = {
     category: "LUMINA",
     description: "Immune to Burn.",
     cost: 15,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const anti_charm: Lumina = {
@@ -68,8 +89,11 @@ const anti_charm: Lumina = {
     category: "LUMINA",
     description: "Immune to Charm.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const anti_freeze: Lumina = {
@@ -77,8 +101,11 @@ const anti_freeze: Lumina = {
     category: "LUMINA",
     description: "Immune to Freeze.",
     cost: 15,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const anti_stun: Lumina = {
@@ -86,8 +113,11 @@ const anti_stun: Lumina = {
     category: "LUMINA",
     description: "Immune to Stun.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const at_deaths_door: Lumina = {
@@ -95,8 +125,11 @@ const at_deaths_door: Lumina = {
     category: "LUMINA",
     description: "Deal 50% more damage if Health is below 10%.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_DMG", target: "DAMAGE_MUL", dmg: 50 }],
+        condition: { kind: "PERC_LT", stat1: "current_health", stat2: "health", perc: 10 },
+        event: { kind: "ON_TURN_END" }
+    }]
 }
 
 const attack_lifesteal: Lumina = {
@@ -104,8 +137,11 @@ const attack_lifesteal: Lumina = {
     category: "LUMINA",
     description: "Recover 15% Health on Base Attack.",
     cost: 15,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const augmented_aim: Lumina = {
@@ -113,8 +149,11 @@ const augmented_aim: Lumina = {
     category: "LUMINA",
     description: "50% increased Free Aim damage.",
     cost: 3,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const augmented_attack: Lumina = {
@@ -122,8 +161,11 @@ const augmented_attack: Lumina = {
     category: "LUMINA",
     description: "50% increased Base Attack damage.",
     cost: 7,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_DMG", target: "DAMAGE_ADD", dmg: 50 }],
+        condition: { kind: "HAS_ATTACK", name: "Base Attack" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const augmented_counter_i: Lumina = {
@@ -131,8 +173,11 @@ const augmented_counter_i: Lumina = {
     category: "LUMINA",
     description: "25% increased Counterattack damage.",
     cost: 3,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const augmented_counter_ii: Lumina = {
@@ -140,8 +185,11 @@ const augmented_counter_ii: Lumina = {
     category: "LUMINA",
     description: "50% increased Counterattack damage.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const augmented_counter_iii: Lumina = {
@@ -149,8 +197,11 @@ const augmented_counter_iii: Lumina = {
     category: "LUMINA",
     description: "75% increased Counterattack damage.",
     cost: 7,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const augmented_first_strike: Lumina = {
@@ -158,8 +209,11 @@ const augmented_first_strike: Lumina = {
     category: "LUMINA",
     description: "50% increased damage on the first hit. Once per battle.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_DMG", target: "DAMAGE_ADD", dmg: 50 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const auto_death: Lumina = {
@@ -167,8 +221,11 @@ const auto_death: Lumina = {
     category: "LUMINA",
     description: "Kill self on battle start.",
     cost: 1,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "OVR_STAT", stat: "current_health", ovr: 0 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const auto_powerful: Lumina = {
@@ -176,8 +233,11 @@ const auto_powerful: Lumina = {
     category: "LUMINA",
     description: "Apply Powerful for 3 turns on battle start.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_BUFF", buff: "powerful", turns: 3 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const auto_regen: Lumina = {
@@ -185,8 +245,11 @@ const auto_regen: Lumina = {
     category: "LUMINA",
     description: "Apply Regen for 3 turns on battle start.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_BUFF", buff: "regen", turns: 3 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const auto_rush: Lumina = {
@@ -194,8 +257,11 @@ const auto_rush: Lumina = {
     category: "LUMINA",
     description: "Apply Rush for 3 turns on battle start.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_BUFF", buff: "rush", turns: 3 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const auto_shell: Lumina = {
@@ -203,8 +269,11 @@ const auto_shell: Lumina = {
     category: "LUMINA",
     description: "Apply Shell for 3 turns on battle start.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_BUFF", buff: "shell", turns: 3 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const base_shield: Lumina = {
@@ -212,8 +281,11 @@ const base_shield: Lumina = {
     category: "LUMINA",
     description: "+1 Shield if not affected by any Shield on turn start.",
     cost: 20,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STATUS_EFFECT", target: "PLAYER", status: "shield", turns: 1 }],
+        condition: { kind: "STATUS_EQ", status: "shield", value: 0 },
+        event: { kind: "ON_TURN_START" }
+    }]
 }
 
 const beneficial_contamination: Lumina = {
@@ -221,8 +293,12 @@ const beneficial_contamination: Lumina = {
     category: "LUMINA",
     description: "+2 AP on applying a Status Effect. Once per turn.",
     cost: 15,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "ap", add: 2 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_STATUS_EFFECT_APPLIED", target: "PLAYER", status: "ANY" },
+        once: true
+    }]
 }
 
 const break_specialist: Lumina = {
@@ -230,8 +306,11 @@ const break_specialist: Lumina = {
     category: "LUMINA",
     description: "Break damage is increased by 50%, but base damage is reduced by 20%.",
     cost: 1,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_DMG", target: "DAMAGE_ADD", dmg: -20 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const breaker: Lumina = {
@@ -239,8 +318,11 @@ const breaker: Lumina = {
     category: "LUMINA",
     description: "25% increased Break damage.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const breaking_attack: Lumina = {
@@ -248,17 +330,23 @@ const breaking_attack: Lumina = {
     category: "LUMINA",
     description: "Base Attack can Break.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
-}
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
+}//RECONSIDER
 
 const breaking_burn: Lumina = {
     name: "Breaking Burn",
     category: "LUMINA",
     description: "25% increased Break damage on Burning enemies.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const breaking_counter: Lumina = {
@@ -266,8 +354,11 @@ const breaking_counter: Lumina = {
     category: "LUMINA",
     description: "50% increased Break damage on Counterattack.",
     cost: 3,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const breaking_death: Lumina = {
@@ -275,17 +366,23 @@ const breaking_death: Lumina = {
     category: "LUMINA",
     description: "Fully charge enemy's Break Bar on death.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
-}
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
+}//RECONSIDER
 
 const breaking_shots: Lumina = {
     name: "Breaking Shots",
     category: "LUMINA",
     description: "50% increased Break damage with Free Aim Shots.",
     cost: 1,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const breaking_slow: Lumina = {
@@ -293,8 +390,11 @@ const breaking_slow: Lumina = {
     category: "LUMINA",
     description: "25% increased Break damage against Slowed enemies.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const burn_affinity: Lumina = {
@@ -302,8 +402,11 @@ const burn_affinity: Lumina = {
     category: "LUMINA",
     description: "25% increased damage on Burning Targets.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_DMG", target: "DAMAGE_ADD", dmg: 25 }],
+        condition: { kind: "HAS_STATUS_EFFECT", status: "burn" },
+        event: { kind: "ON_TURN_END" }
+    }]
 }
 
 const burning_break: Lumina = {
@@ -311,8 +414,11 @@ const burning_break: Lumina = {
     category: "LUMINA",
     description: "Apply 3 Burn stacks on Breaking a target.",
     cost: 3,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STATUS_EFFECT", target: "ENEMY", status: "burn", turns: 3 }],
+        condition: { kind: "HAS_STATUS_EFFECT", status: "stun" },
+        event: { kind: "ON_ATTACK" }
+    }]
 }
 
 const burning_death: Lumina = {
@@ -320,8 +426,11 @@ const burning_death: Lumina = {
     category: "LUMINA",
     description: "Apply 3 Burn to all enemies on Death.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STATUS_EFFECT", target: "ENEMY", status: "burn", turns: 3 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_DEATH" }
+    }]
 }
 
 const burning_mark: Lumina = {
@@ -329,8 +438,11 @@ const burning_mark: Lumina = {
     category: "LUMINA",
     description: "Apply Burn on hitting a Marked enemy.",
     cost: 15,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STATUS_EFFECT", target: "ENEMY", status: "burn", turns: 1 }],
+        condition: { kind: "HAS_STATUS_EFFECT", status: "mark" },
+        event: { kind: "ON_ATTACK" }
+    }]
 }
 
 const burning_shots: Lumina = {
@@ -338,8 +450,11 @@ const burning_shots: Lumina = {
     category: "LUMINA",
     description: "20% chance to Burn on Free Aim shot.",
     cost: 3,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const charging_alteration: Lumina = {
@@ -347,8 +462,11 @@ const charging_alteration: Lumina = {
     category: "LUMINA",
     description: "+10% of a Gradient Charge on applying a Buff. Once per turn.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const charging_attack: Lumina = {
@@ -356,8 +474,11 @@ const charging_attack: Lumina = {
     category: "LUMINA",
     description: "+15% of a Gradient Charge on Base Attack.",
     cost: 7,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const charging_burn: Lumina = {
@@ -365,8 +486,11 @@ const charging_burn: Lumina = {
     category: "LUMINA",
     description: "+20% of a Gradient Charge on applying Burn. Once per turn.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const charging_counter: Lumina = {
@@ -374,8 +498,11 @@ const charging_counter: Lumina = {
     category: "LUMINA",
     description: "+20% of a Gradient Charge on Counterattack.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const charging_critical: Lumina = {
@@ -383,8 +510,11 @@ const charging_critical: Lumina = {
     category: "LUMINA",
     description: "+20% of a Gradient Charge on Critical Hit. Once per turn.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const charging_mark: Lumina = {
@@ -392,8 +522,11 @@ const charging_mark: Lumina = {
     category: "LUMINA",
     description: "+20% of a Gradient Charge on hitting a Marked target. Once per turn.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const charging_stun: Lumina = {
@@ -401,8 +534,11 @@ const charging_stun: Lumina = {
     category: "LUMINA",
     description: "+5% of a Gradient Charge on hitting a Stunned enemy.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const charging_tint: Lumina = {
@@ -410,8 +546,11 @@ const charging_tint: Lumina = {
     category: "LUMINA",
     description: "+5% of a Gradient Charge on using an item.",
     cost: 2,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const charging_weakness: Lumina = {
@@ -419,8 +558,11 @@ const charging_weakness: Lumina = {
     category: "LUMINA",
     description: "+15% of a Gradient Charge on hitting a Weakness. Once per turn.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const cheater: Lumina = {
@@ -428,8 +570,11 @@ const cheater: Lumina = {
     category: "LUMINA",
     description: "Always play twice in a row.",
     cost: 40,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const cleas_life: Lumina = {
@@ -437,8 +582,11 @@ const cleas_life: Lumina = {
     category: "LUMINA",
     description: "On turn start, if no damage taken since last turn, recover 100% Health.",
     cost: 30,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const cleansing_tint: Lumina = {
@@ -446,17 +594,23 @@ const cleansing_tint: Lumina = {
     category: "LUMINA",
     description: "Healing Tints also remove all Status Effects from the target.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const combo_attack_i: Lumina = {
     name: "Combo Attack I",
     category: "LUMINA",
-    description: "Base Attack has 1 extra hit.",
+    description: "Base Attack has 1 extra hit.", 
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "hits", add: 1 }],
+        condition: { kind: "HAS_ATTACK", name: "Base Attack" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const combo_attack_ii: Lumina = {
@@ -464,8 +618,11 @@ const combo_attack_ii: Lumina = {
     category: "LUMINA",
     description: "Base Attack has 1 extra hit.",
     cost: 20,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "hits", add: 1 }],
+        condition: { kind: "HAS_ATTACK", name: "Base Attack" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const combo_attack_iii: Lumina = {
@@ -473,8 +630,11 @@ const combo_attack_iii: Lumina = {
     category: "LUMINA",
     description: "Base Attack has 1 extra hit.",
     cost: 30,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "hits", add: 1 }],
+        condition: { kind: "HAS_ATTACK", name: "Base Attack" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const confident: Lumina = {
@@ -482,8 +642,11 @@ const confident: Lumina = {
     category: "LUMINA",
     description: "Take 50% less damage, but can't be Healed.",
     cost: 20,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "TOGGLE_RULE", rule: "cant_heal" }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const confident_fighter: Lumina = {
@@ -491,8 +654,15 @@ const confident_fighter: Lumina = {
     category: "LUMINA",
     description: "30% increased damage, but can't be Healed.",
     cost: 15,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [
+            { kind: "ADD_DMG", target: "DAMAGE_MUL", dmg: 30 },
+            { kind: "TOGGLE_RULE", rule: "cant_heal" }
+        ],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
+
 }
 
 const critical_break: Lumina = {
@@ -500,8 +670,11 @@ const critical_break: Lumina = {
     category: "LUMINA",
     description: "25% increased Break damage on Critical Hits.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const critical_burn: Lumina = {
@@ -509,8 +682,11 @@ const critical_burn: Lumina = {
     category: "LUMINA",
     description: "25% increased Critical Chance on Burning enemies.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "critical_rate", add: 25 }],
+        condition: { kind: "HAS_STATUS_EFFECT", status: "burn" },
+        event: { kind: "ON_TURN_END" }
+    }]
 }
 
 const critical_moment: Lumina = {
@@ -518,8 +694,11 @@ const critical_moment: Lumina = {
     category: "LUMINA",
     description: "50% increased Critical Chance if Health is below 30%.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "critical_rate", add: 50 }],
+        condition: { kind: "PERC_LT", stat1: "current_health", stat2: "health", perc: 30 },
+        event: { kind: "ON_TURN_END" }
+    }]
 }
 
 const critical_stun: Lumina = {
@@ -527,8 +706,11 @@ const critical_stun: Lumina = {
     category: "LUMINA",
     description: "100% on Critical Chance on hitting a Stunned target.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "critical_rate", add: 100 }],
+        condition: { kind: "HAS_STATUS_EFFECT", status: "stun" },
+        event: { kind: "ON_TURN_END" }
+    }]
 }
 
 const critical_vulnerability: Lumina = {
@@ -536,8 +718,11 @@ const critical_vulnerability: Lumina = {
     category: "LUMINA",
     description: "25% increased Critical Chance on Defenceless enemies.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "critical_rate", add: 25 }],
+        condition: { kind: "HAS_DEBUFF", debuff: "defenceless" },
+        event: { kind: "ON_TURN_END" }
+    }]
 }
 
 const critical_weakness: Lumina = {
@@ -545,8 +730,11 @@ const critical_weakness: Lumina = {
     category: "LUMINA",
     description: "25% increased Critical Chance on Weakness.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const dead_energy_i: Lumina = {
@@ -554,8 +742,11 @@ const dead_energy_i: Lumina = {
     category: "LUMINA",
     description: "+3 AP on killing an enemy.",
     cost: 2,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const dead_energy_ii: Lumina = {
@@ -563,8 +754,11 @@ const dead_energy_ii: Lumina = {
     category: "LUMINA",
     description: "+3 AP on killing an enemy.",
     cost: 2,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const death_bomb: Lumina = {
@@ -572,17 +766,23 @@ const death_bomb: Lumina = {
     category: "LUMINA",
     description: "On Death, deal damage to all enemies.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
-}
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "bonus_dmg", add: 999 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_DEATH" }
+    }]
+}//KEINE AHNUNG WIE DAS BERECHNET WIRD EINFACH EXTRA DAMAGE STAT HIER
 
 const defensive_mode: Lumina = {
     name: "Defensive Mode",
     category: "LUMINA",
     description: "On receiving damage, consume 1 AP to take 30% less damage, if possible.",
     cost: 1,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const dodger: Lumina = {
@@ -590,8 +790,11 @@ const dodger: Lumina = {
     category: "LUMINA",
     description: "Gain 1 AP on Perfect Dodge. Once per turn.",
     cost: 1,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const double_burn: Lumina = {
@@ -599,8 +802,11 @@ const double_burn: Lumina = {
     category: "LUMINA",
     description: "On applying a Burn stack, apply a second one.",
     cost: 30,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "TOGGLE_RULE", rule: "double_burn" }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const double_mark: Lumina = {
@@ -608,8 +814,11 @@ const double_mark: Lumina = {
     category: "LUMINA",
     description: "Mark requires 1 more hit to be removed.",
     cost: 20,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "TOGGLE_RULE", rule: "double_mark" }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const draining_cleanse: Lumina = {
@@ -617,8 +826,11 @@ const draining_cleanse: Lumina = {
     category: "LUMINA",
     description: "Consume 1 AP to prevent Status Effects application, if possible.",
     cost: 15,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const effective_heal: Lumina = {
@@ -626,8 +838,11 @@ const effective_heal: Lumina = {
     category: "LUMINA",
     description: "Double all Heals received.",
     cost: 30,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "TOGGLE_RULE", rule: "double_heal" }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const effective_support: Lumina = {
@@ -635,8 +850,11 @@ const effective_support: Lumina = {
     category: "LUMINA",
     description: "+2 AP on using an item.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const empowering_attack: Lumina = {
@@ -644,8 +862,11 @@ const empowering_attack: Lumina = {
     category: "LUMINA",
     description: "Gain Powerful for 1 turn on Base Attack.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_BUFF", buff: "powerful", turns: 1 }],
+        condition: { kind: "HAS_ATTACK", name: "Base Attack" },
+        event: { kind: "ON_END" }
+    }]
 }
 
 const empowering_break: Lumina = {
@@ -653,8 +874,11 @@ const empowering_break: Lumina = {
     category: "LUMINA",
     description: "Gain Powerful on Breaking a target.",
     cost: 3,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_BUFF", buff: "powerful", turns: 1 }],
+        condition: { kind: "HAS_STATUS_EFFECT", status: "stun" },
+        event: { kind: "ON_END" }
+    }]
 }
 
 const empowering_dodge: Lumina = {
@@ -662,8 +886,11 @@ const empowering_dodge: Lumina = {
     category: "LUMINA",
     description: "5% increased damage for each consecutive successful Dodge. Can stack up to 10 times.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const empowering_last_stand: Lumina = {
@@ -671,8 +898,11 @@ const empowering_last_stand: Lumina = {
     category: "LUMINA",
     description: "Gain Powerful if fighting alone.",
     cost: 3,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_BUFF", buff: "powerful", turns: 9999 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const empowering_parry: Lumina = {
@@ -680,8 +910,11 @@ const empowering_parry: Lumina = {
     category: "LUMINA",
     description: "Each successful Parry increases damage by 5% until end of the following turn. Taking any damage removes this buff.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const empowering_tint: Lumina = {
@@ -689,8 +922,11 @@ const empowering_tint: Lumina = {
     category: "LUMINA",
     description: "Healing Tints also apply Powerful.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const energetic_healer: Lumina = {
@@ -698,8 +934,11 @@ const energetic_healer: Lumina = {
     category: "LUMINA",
     description: "+2AP on Healing an ally. Once per turn.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const energising_attack_i: Lumina = {
@@ -707,8 +946,11 @@ const energising_attack_i: Lumina = {
     category: "LUMINA",
     description: "+1 AP on Base Attack.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "ap", add: 1 }],
+        condition: { kind: "HAS_ATTACK", name: "Base Attack" },
+        event: { kind: "ON_END" }
+    }]
 }
 
 const energising_attack_ii: Lumina = {
@@ -716,8 +958,11 @@ const energising_attack_ii: Lumina = {
     category: "LUMINA",
     description: "+1 AP on Base Attack.",
     cost: 15,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "ap", add: 1 }],
+        condition: { kind: "HAS_ATTACK", name: "Base Attack" },
+        event: { kind: "ON_END" }
+    }]
 }
 
 const energising_break: Lumina = {
@@ -725,8 +970,11 @@ const energising_break: Lumina = {
     category: "LUMINA",
     description: "+3 AP on Breaking a target.",
     cost: 3,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "ap", add: 3 }],
+        condition: { kind: "HAS_STATUS_EFFECT", status: "stun" },
+        event: { kind: "ON_END" }
+    }]
 }
 
 const energising_burn: Lumina = {
@@ -734,8 +982,12 @@ const energising_burn: Lumina = {
     category: "LUMINA",
     description: "+1 AP on applying Burn. Once per turn.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "ap", add: 1 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_STATUS_EFFECT_APPLIED", target: "ENEMY", status: "burn" },
+        once: true
+    }]
 }
 
 const energising_cleanse: Lumina = {
@@ -743,8 +995,11 @@ const energising_cleanse: Lumina = {
     category: "LUMINA",
     description: "Dispel the first negative Status Effect received an gain 2 AP.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const energising_death: Lumina = {
@@ -752,8 +1007,11 @@ const energising_death: Lumina = {
     category: "LUMINA",
     description: "On death, +4 AP to allies.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const energising_gradient: Lumina = {
@@ -761,8 +1019,11 @@ const energising_gradient: Lumina = {
     category: "LUMINA",
     description: "+1 AP per Gradient Charge consumed.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const energising_heal: Lumina = {
@@ -770,8 +1031,11 @@ const energising_heal: Lumina = {
     category: "LUMINA",
     description: "On Healing an ally, also give 2 AP.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const energising_jump: Lumina = {
@@ -779,8 +1043,11 @@ const energising_jump: Lumina = {
     category: "LUMINA",
     description: "+1 AP on Jump Counterattack.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const energising_pain: Lumina = {
@@ -788,8 +1055,11 @@ const energising_pain: Lumina = {
     category: "LUMINA",
     description: "No longer gain AP on Parry. +1AP on getting hit.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const energising_parry: Lumina = {
@@ -797,8 +1067,11 @@ const energising_parry: Lumina = {
     category: "LUMINA",
     description: "+1 AP on successful Parry.",
     cost: 15,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const energising_powerful: Lumina = {
@@ -806,8 +1079,11 @@ const energising_powerful: Lumina = {
     category: "LUMINA",
     description: "Give 2 AP on applying Powerful.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "ap", add: 2 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_BUFF_APPLIED", buff: "powerful" }
+    }]
 }
 
 const energising_revive: Lumina = {
@@ -815,8 +1091,11 @@ const energising_revive: Lumina = {
     category: "LUMINA",
     description: "+3 AP to all allies when revived.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const energising_rush: Lumina = {
@@ -824,8 +1103,11 @@ const energising_rush: Lumina = {
     category: "LUMINA",
     description: "Give 2 AP on applying Rush.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "ap", add: 2 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_BUFF_APPLIED", buff: "rush" }
+    }]
 }
 
 const energising_shell: Lumina = {
@@ -833,8 +1115,11 @@ const energising_shell: Lumina = {
     category: "LUMINA",
     description: "Give 2 AP on applying Shell.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "ap", add: 2 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_BUFF_APPLIED", buff: "shell" }
+    }]
 }
 
 const energising_shots: Lumina = {
@@ -842,8 +1127,11 @@ const energising_shots: Lumina = {
     category: "LUMINA",
     description: "20% chance to gain 1 AP on Free Aim shot.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const energising_start_i: Lumina = {
@@ -851,8 +1139,11 @@ const energising_start_i: Lumina = {
     category: "LUMINA",
     description: "+1 AP on battle start.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "ap", add: 1 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const energising_start_ii: Lumina = {
@@ -860,8 +1151,11 @@ const energising_start_ii: Lumina = {
     category: "LUMINA",
     description: "+1 AP on battle start.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "ap", add: 1 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const energising_start_iii: Lumina = {
@@ -869,8 +1163,11 @@ const energising_start_iii: Lumina = {
     category: "LUMINA",
     description: "+1 AP on battle start.",
     cost: 15,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "ap", add: 1 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const energising_start_iv: Lumina = {
@@ -878,8 +1175,11 @@ const energising_start_iv: Lumina = {
     category: "LUMINA",
     description: "+1 AP on battle start.",
     cost: 20,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "ap", add: 1 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const energising_stun: Lumina = {
@@ -887,8 +1187,11 @@ const energising_stun: Lumina = {
     category: "LUMINA",
     description: "+1 AP on hitting a Stunned target with a Skill.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const energising_turn: Lumina = {
@@ -896,8 +1199,11 @@ const energising_turn: Lumina = {
     category: "LUMINA",
     description: "+1 AP on turn start.",
     cost: 20,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "ap", add: 1 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_TURN_START" }
+    }]
 }
 
 const energy_master: Lumina = {
@@ -905,8 +1211,11 @@ const energy_master: Lumina = {
     category: "LUMINA",
     description: "Every AP gain is increased by 1.",
     cost: 40,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "TOGGLE_RULE", rule: "bonus_ap" }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const enfeebling_attack: Lumina = {
@@ -914,8 +1223,11 @@ const enfeebling_attack: Lumina = {
     category: "LUMINA",
     description: "Base Attack applies Powerless for 1 turn.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_DEBUFF", debuff: "powerless", turns: 1 }],
+        condition: { kind: "HAS_ATTACK", name: "Base Attack" },
+        event: { kind: "ON_END" }
+    }]
 }
 
 const enfeebling_mark: Lumina = {
@@ -923,8 +1235,11 @@ const enfeebling_mark: Lumina = {
     category: "LUMINA",
     description: "Marked targets deal 30% less damage.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+        triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const exhausting_power: Lumina = {
@@ -932,17 +1247,23 @@ const exhausting_power: Lumina = {
     category: "LUMINA",
     description: "50% increased damage if Exhausted.",
     cost: 2,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
-}
+        triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
+}//CANT GET EXHAUSTED BY ONESELF
 
 const exposing_attack: Lumina = {
     name: "Exposing Attack",
     category: "LUMINA",
-    description: "Base Attack applies Defenseless for 1 turn.",
+    description: "Base Attack applies Defenceless for 1 turn.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_DEBUFF", debuff: "defenceless", turns: 1 }],
+        condition: { kind: "HAS_ATTACK", name: "Base Attack" },
+        event: { kind: "ON_END" }
+    }]
 }
 
 const exposing_break: Lumina = {
@@ -950,8 +1271,11 @@ const exposing_break: Lumina = {
     category: "LUMINA",
     description: "Apply Defenceless on Break.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_DEBUFF", debuff: "defenceless", turns: 1 }],
+        condition: { kind: "HAS_STATUS_EFFECT", status: "stun" },
+        event: { kind: "ON_END" }
+    }]
 }
 
 const faster_than_strong: Lumina = {
@@ -959,8 +1283,11 @@ const faster_than_strong: Lumina = {
     category: "LUMINA",
     description: "Always play twice in a row, but deal 50% less damage.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "TOGGLE_RULE", rule: "faster_than_stronger" }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const first_offensive: Lumina = {
@@ -968,8 +1295,11 @@ const first_offensive: Lumina = {
     category: "LUMINA",
     description: "First hit dealt and taken deals 50% more damage.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_DMG", target: "DAMAGE_MUL", dmg: 50 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const first_strike: Lumina = {
@@ -977,8 +1307,11 @@ const first_strike: Lumina = {
     category: "LUMINA",
     description: "Play first.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const fueling_break: Lumina = {
@@ -986,8 +1319,11 @@ const fueling_break: Lumina = {
     category: "LUMINA",
     description: "Breaking a target doubles its Burn amount.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "MUL_STATUS_EFFECT", target: "ENEMY", status: "burn", mul: 2 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_STATUS_EFFECT_APPLIED", target: "ENEMY", status: "stun" }
+    }]
 }
 
 const full_strength: Lumina = {
@@ -995,8 +1331,11 @@ const full_strength: Lumina = {
     category: "LUMINA",
     description: "25% increased damage on full Health.",
     cost: 15,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_DMG", target: "DAMAGE_MUL", dmg: 25 }],
+        condition: { kind: "PERC_EQ", stat1: "current_health", stat2: "health", perc: 100 },
+        event: { kind: "ON_TURN_END" }
+    }]
 }
 
 const glass_canon: Lumina = {
@@ -1004,8 +1343,11 @@ const glass_canon: Lumina = {
     category: "LUMINA",
     description: "Deal 25% more damage, but take 25% more damage.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_DMG", target: "DAMAGE_MUL", dmg: 25 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const gradient_break: Lumina = {
@@ -1013,8 +1355,11 @@ const gradient_break: Lumina = {
     category: "LUMINA",
     description: "+50% of a Gradient Charge on Breaking a target.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const gradient_breaker: Lumina = {
@@ -1022,8 +1367,11 @@ const gradient_breaker: Lumina = {
     category: "LUMINA",
     description: "50% increased Breaking damage with Gradient Attacks.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const gradient_fighter: Lumina = {
@@ -1031,8 +1379,11 @@ const gradient_fighter: Lumina = {
     category: "LUMINA",
     description: "+25% increased damage with Gradient Attacks.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const greater_defenceless: Lumina = {
@@ -1040,8 +1391,11 @@ const greater_defenceless: Lumina = {
     category: "LUMINA",
     description: "+15% to Defenceless damage amplification.",
     cost: 15,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "TOGGLE_RULE", rule: "greater_defenceless" }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const greater_powerful: Lumina = {
@@ -1049,8 +1403,11 @@ const greater_powerful: Lumina = {
     category: "LUMINA",
     description: "+15% to Powerful damage increase.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "TOGGLE_RULE", rule: "greater_powerful" }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const greater_powerless: Lumina = {
@@ -1058,8 +1415,11 @@ const greater_powerless: Lumina = {
     category: "LUMINA",
     description: "+15% to Powerless damage reduction.",
     cost: 15,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const greater_rush: Lumina = {
@@ -1067,8 +1427,11 @@ const greater_rush: Lumina = {
     category: "LUMINA",
     description: "+25% Rush Speed increase.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const greater_shell: Lumina = {
@@ -1076,8 +1439,11 @@ const greater_shell: Lumina = {
     category: "LUMINA",
     description: "+10% to Shell damage reduction.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const greater_slow: Lumina = {
@@ -1085,8 +1451,11 @@ const greater_slow: Lumina = {
     category: "LUMINA",
     description: "+15% to Slow Speed reduction.",
     cost: 15,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const healing_boon: Lumina = {
@@ -1094,8 +1463,11 @@ const healing_boon: Lumina = {
     category: "LUMINA",
     description: "Heal 15% HP on applying a buff.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_PERC_STAT", stat1: "current_health", stat2: "health", perc: 15 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_BUFF_APPLIED", buff: "ANY" }
+    }]
 }
 
 const healing_counter: Lumina = {
@@ -1103,8 +1475,11 @@ const healing_counter: Lumina = {
     category: "LUMINA",
     description: "Recover 25% Health on Counterattack.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const healing_death: Lumina = {
@@ -1112,8 +1487,11 @@ const healing_death: Lumina = {
     category: "LUMINA",
     description: "On death, the rest of the Expedition recover all Health.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const healing_fire: Lumina = {
@@ -1121,8 +1499,11 @@ const healing_fire: Lumina = {
     category: "LUMINA",
     description: "Recover 25% Health when attacking a Burning target. Once per turn.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_PERC_STAT", stat1: "current_health", stat2: "health", perc: 25 }],
+        condition: { kind: "HAS_STATUS_EFFECT", status: "burn" },
+        event: { kind: "ON_END" }
+    }]
 }
 
 const healing_mark: Lumina = {
@@ -1130,8 +1511,11 @@ const healing_mark: Lumina = {
     category: "LUMINA",
     description: "Recover 25% Health on hitting a Marked enemy. Once per turn.",
     cost: 20,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_PERC_STAT", stat1: "current_health", stat2: "health", perc: 25 }],
+        condition: { kind: "HAS_STATUS_EFFECT", status: "mark" },
+        event: { kind: "ON_END" }
+    }]
 }
 
 const healing_parry: Lumina = {
@@ -1139,8 +1523,11 @@ const healing_parry: Lumina = {
     category: "LUMINA",
     description: "Recover 3% Health on Parry.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const healing_share: Lumina = {
@@ -1148,8 +1535,11 @@ const healing_share: Lumina = {
     category: "LUMINA",
     description: "Receive 15% of all Heals affecting other characters.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const healing_stun: Lumina = {
@@ -1157,8 +1547,11 @@ const healing_stun: Lumina = {
     category: "LUMINA",
     description: "Recover 5% Health on hitting a Stunned target.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_PERC_STAT", stat1: "current_health", stat2: "health", perc: 5 }],
+        condition: { kind: "HAS_STATUS_EFFECT", status: "stun" },
+        event: { kind: "ON_END" }
+    }]
 }
 
 const healing_tint_energy: Lumina = {
@@ -1166,8 +1559,11 @@ const healing_tint_energy: Lumina = {
     category: "LUMINA",
     description: "Healing Tints also give 1 AP.",
     cost: 1,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const immaculate: Lumina = {
@@ -1175,8 +1571,11 @@ const immaculate: Lumina = {
     category: "LUMINA",
     description: "30% increased damage until a hit is received.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_DMG", target: "DAMAGE_ADD", dmg: 30 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const in_medias_res: Lumina = {
@@ -1184,8 +1583,14 @@ const in_medias_res: Lumina = {
     category: "LUMINA",
     description: "+3 Shields on Battle Start, but max Health is halved.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [
+            { kind: "ADD_STATUS_EFFECT", target: "PLAYER", status: "shield", turns: 3 },
+            { kind: "DIV_STAT", stat: "health", div: 2 }
+        ],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const inverted_affinity: Lumina = {
@@ -1193,8 +1598,14 @@ const inverted_affinity: Lumina = {
     category: "LUMINA",
     description: "Apply Inverted on self for 3 turns on battle start. 50% increased damage while Inverted.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [
+            { kind: "ADD_STATUS_EFFECT", target: "PLAYER", status: "inverted", turns: 3 },
+            { kind: "ADD_DMG", target: "DAMAGE_ADD", dmg: 50 }
+        ],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const last_stand_critical: Lumina = {
@@ -1202,8 +1613,11 @@ const last_stand_critical: Lumina = {
     category: "LUMINA",
     description: "100% Critical Chance while fighting alone.",
     cost: 3,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "critical_rate", add: 100 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const longer_burn: Lumina = {
@@ -1211,8 +1625,11 @@ const longer_burn: Lumina = {
     category: "LUMINA",
     description: "Burn duration is increased by 2.",
     cost: 15,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const longer_powerful: Lumina = {
@@ -1220,8 +1637,11 @@ const longer_powerful: Lumina = {
     category: "LUMINA",
     description: "On applying Powerful, its duration is increased by 2.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const longer_rush: Lumina = {
@@ -1229,8 +1649,11 @@ const longer_rush: Lumina = {
     category: "LUMINA",
     description: "On applying Rush, its duration is increased by 2.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const longer_shell: Lumina = {
@@ -1238,8 +1661,11 @@ const longer_shell: Lumina = {
     category: "LUMINA",
     description: "On applying Shell, its duration is increased by 2.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const marking_break: Lumina = {
@@ -1247,8 +1673,11 @@ const marking_break: Lumina = {
     category: "LUMINA",
     description: "Apply Mark on Break.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STATUS_EFFECT", target: "ENEMY", status: "mark", turns: 1 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_STATUS_EFFECT_APPLIED", target: "ENEMY", status: "stun" }
+    }]
 }
 
 const marking_shots: Lumina = {
@@ -1256,8 +1685,11 @@ const marking_shots: Lumina = {
     category: "LUMINA",
     description: "20% chance to apply Mark on Free Aim shot.",
     cost: 3,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const painted_power: Lumina = {
@@ -1265,8 +1697,11 @@ const painted_power: Lumina = {
     category: "LUMINA",
     description: "Damage can exceed 9,999.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "TOGGLE_RULE", rule: "exceed_dmg_cap" }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const painter: Lumina = {
@@ -1274,8 +1709,11 @@ const painter: Lumina = {
     category: "LUMINA",
     description: "Convert all Physical damage to Void damage.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const perilous_parry: Lumina = {
@@ -1283,8 +1721,11 @@ const perilous_parry: Lumina = {
     category: "LUMINA",
     description: "+1 AP on Parry, but damage received is doubled.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const piercing_shot: Lumina = {
@@ -1292,17 +1733,23 @@ const piercing_shot: Lumina = {
     category: "LUMINA",
     description: "25% increased Free Aim damage. Free Aim shots ignore Shields.",
     cost: 2,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const powered_attack: Lumina = {
     name: "Powered Attack",
     category: "LUMINA",
-    description: "On every damage dealt, try to consume 1 AP. If successful, increase damage by 20.",
+    description: "On every damage dealt, try to consume 1 AP. If successful, increase damage by 20%.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_DMG", target: "DAMAGE_ADD", dmg: 20 }],
+        condition: { kind: "STAT_GTE", stat: "ap", value: 1 },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const powerful_heal: Lumina = {
@@ -1310,8 +1757,11 @@ const powerful_heal: Lumina = {
     category: "LUMINA",
     description: "Healing an ally also applies Powerful for 1 turn.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const powerful_mark: Lumina = {
@@ -1319,8 +1769,11 @@ const powerful_mark: Lumina = {
     category: "LUMINA",
     description: "Gain Powerful on hitting a Marked enemy.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_BUFF", buff: "powerful", turns: 1 }],
+        condition: { kind: "HAS_STATUS_EFFECT", status: "mark" },
+        event: { kind: "ON_END" }
+    }]
 }
 
 const powerful_on_shell: Lumina = {
@@ -1328,8 +1781,11 @@ const powerful_on_shell: Lumina = {
     category: "LUMINA",
     description: "Apply Powerful on applying Shell.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_BUFF", buff: "powerful", turns: 1 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_BUFF_APPLIED", buff: "shell" }
+    }]
 }
 
 const powerful_revive: Lumina = {
@@ -1337,8 +1793,11 @@ const powerful_revive: Lumina = {
     category: "LUMINA",
     description: "Apply Powerful for 3 turns when revived.",
     cost: 3,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_BUFF", buff: "powerful", turns: 3 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_REVIVE" }
+    }]
 }
 
 const powerful_shield: Lumina = {
@@ -1346,8 +1805,11 @@ const powerful_shield: Lumina = {
     category: "LUMINA",
     description: "10% increased damage per Shield Point on self.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "TOGGLE_RULE", rule: "powerful_shield" }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_TURN_END" }
+    }]
 }
 
 const powerful_shots: Lumina = {
@@ -1355,8 +1817,11 @@ const powerful_shots: Lumina = {
     category: "LUMINA",
     description: "20% chance to gain Powerful on Free Aim shot.",
     cost: 3,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const pro_retreat: Lumina = {
@@ -1364,8 +1829,11 @@ const pro_retreat: Lumina = {
     category: "LUMINA",
     description: "Allows Flee to be instantaneous.",
     cost: 40,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const protecting_attack: Lumina = {
@@ -1373,8 +1841,11 @@ const protecting_attack: Lumina = {
     category: "LUMINA",
     description: "Gain Shell for 1 turn on Base Attack.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_BUFF", buff: "shell", turns: 1 }],
+        condition: { kind: "HAS_ATTACK", name: "Base Attack" },
+        event: { kind: "ON_END" }
+    }]
 }
 
 const protecting_death: Lumina = {
@@ -1382,8 +1853,11 @@ const protecting_death: Lumina = {
     category: "LUMINA",
     description: "On death, allies gain Shell.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const protecting_heal: Lumina = {
@@ -1391,8 +1865,11 @@ const protecting_heal: Lumina = {
     category: "LUMINA",
     description: "Healing an ally also applies Shell for 1 turn.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const protecting_last_stand: Lumina = {
@@ -1400,8 +1877,11 @@ const protecting_last_stand: Lumina = {
     category: "LUMINA",
     description: "Gain Shell if fighting alone.",
     cost: 3,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_BUFF", buff: "shell", turns: 9999 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const protecting_shots: Lumina = {
@@ -1409,8 +1889,11 @@ const protecting_shots: Lumina = {
     category: "LUMINA",
     description: "20% chance to gain Shell on Free Aim shot.",
     cost: 3,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const protecting_tint: Lumina = {
@@ -1418,8 +1901,11 @@ const protecting_tint: Lumina = {
     category: "LUMINA",
     description: "Healing Tints also apply Shell.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+        triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const quick_break: Lumina = {
@@ -1427,8 +1913,11 @@ const quick_break: Lumina = {
     category: "LUMINA",
     description: "Play again on Breaking a target.",
     cost: 3,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const random_defense: Lumina = {
@@ -1436,17 +1925,23 @@ const random_defense: Lumina = {
     category: "LUMINA",
     description: "Damage taken is randomly multiplied by a value between 50% and 200%.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const recovery: Lumina = {
     name: "Recovery",
     category: "LUMINA",
-    description: "Recovers 10% Health on turn start. (Reward for spending Chroma at the Red Woods Nevron quest)",
+    description: "Recovers 10% Health on turn start.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const rejuvenating_revive: Lumina = {
@@ -1454,8 +1949,11 @@ const rejuvenating_revive: Lumina = {
     category: "LUMINA",
     description: "Apply Regen for 3 turns when revived.",
     cost: 3,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_BUFF", buff: "regen", turns: 3 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_REVIVE" }
+    }]
 }
 
 const revive_paradox: Lumina = {
@@ -1463,8 +1961,11 @@ const revive_paradox: Lumina = {
     category: "LUMINA",
     description: "Play immediately when revived.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const revive_tint_energy: Lumina = {
@@ -1472,8 +1973,11 @@ const revive_tint_energy: Lumina = {
     category: "LUMINA",
     description: "Revive Tints also give 3 AP.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const rewarding_mark: Lumina = {
@@ -1481,8 +1985,11 @@ const rewarding_mark: Lumina = {
     category: "LUMINA",
     description: "+2 AP on dealing damage to a Marked target. Once per turn.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STAT", stat: "ap", add: 2 }],
+        condition: { kind: "HAS_STATUS_EFFECT", status: "mark" },
+        event: { kind: "ON_END" }
+    }]
 }
 
 const roulette: Lumina = {
@@ -1490,8 +1997,11 @@ const roulette: Lumina = {
     category: "LUMINA",
     description: "Every hit has a 50% chance to deal either 50% or 200% of its damage.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_DMG", target: "DAMAGE_MUL", dmg: 200 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const rush_on_powerful: Lumina = {
@@ -1499,8 +2009,11 @@ const rush_on_powerful: Lumina = {
     category: "LUMINA",
     description: "Apply Rush on applying Powerful.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_BUFF", buff: "rush", turns: 1 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_BUFF_APPLIED", buff: "powerful" }
+    }]
 }
 
 const second_chance: Lumina = {
@@ -1508,8 +2021,12 @@ const second_chance: Lumina = {
     category: "LUMINA",
     description: "Revive with 100% Health. Once per battle.",
     cost: 40,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "REVIVE_FULL" }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_DEATH" },
+        priority: 1
+    }]
 }
 
 const shared_care: Lumina = {
@@ -1517,8 +2034,11 @@ const shared_care: Lumina = {
     category: "LUMINA",
     description: "When healing an ally, also Heal self for 50% of that value.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const shell_on_rush: Lumina = {
@@ -1526,8 +2046,11 @@ const shell_on_rush: Lumina = {
     category: "LUMINA",
     description: "Apply Shell on applying Rush.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_BUFF", buff: "shell", turns: 1 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_BUFF_APPLIED", buff: "rush" }
+    }]
 }
 
 const shield_affinity: Lumina = {
@@ -1535,8 +2058,11 @@ const shield_affinity: Lumina = {
     category: "LUMINA",
     description: "30% increased damage while having Shields, but receiving any damage always removes all Shields.",
     cost: 15,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_DMG", target: "DAMAGE_ADD", dmg: 30 }],
+        condition: { kind: "HAS_STATUS_EFFECT", status: "shield" },
+        event: { kind: "ON_TURN_END" }
+    }]
 }
 
 const shielding_death: Lumina = {
@@ -1544,8 +2070,11 @@ const shielding_death: Lumina = {
     category: "LUMINA",
     description: "On death, allies gain 3 Shield points.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const shielding_tint: Lumina = {
@@ -1553,8 +2082,11 @@ const shielding_tint: Lumina = {
     category: "LUMINA",
     description: "Healing Tints also add 2 Shields.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const shortcut: Lumina = {
@@ -1562,8 +2094,11 @@ const shortcut: Lumina = {
     category: "LUMINA",
     description: "Immediately play when falling below 30% Health. Once per battle.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const slowing_break: Lumina = {
@@ -1571,8 +2106,11 @@ const slowing_break: Lumina = {
     category: "LUMINA",
     description: "Apply Slow on Break.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const sniper: Lumina = {
@@ -1580,8 +2118,11 @@ const sniper: Lumina = {
     category: "LUMINA",
     description: "First Free Aim shot each turn deals 200% increased damage and can Break.",
     cost: 15,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const solidifying: Lumina = {
@@ -1589,17 +2130,23 @@ const solidifying: Lumina = {
     category: "LUMINA",
     description: "+2 Shields when the character's Health falls below 50%. Once per battle.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
-}
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
+}//CANT DAMGE ONESELF ONLY KILL
 
 const solo_fighter: Lumina = {
     name: "Solo Fighter",
     category: "LUMINA",
     description: "Deal 50% more damage if fighting alone.",
     cost: 1,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_DMG", target: "DAMAGE_MUL", dmg: 50 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const sos_power: Lumina = {
@@ -1607,35 +2154,47 @@ const sos_power: Lumina = {
     category: "LUMINA",
     description: "Apply Powerful when falling below 50% Health.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
-}
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
+}//CANT DAMGE ONESELF ONLY KILL
 
 const sos_rush: Lumina = {
     name: "SOS Rush",
     category: "LUMINA",
     description: "Apply Rush when falling below 50% Health.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
-}
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
+}//CANT DAMGE ONESELF ONLY KILL
 
 const sos_shell: Lumina = {
     name: "SOS Shell",
     category: "LUMINA",
     description: "Apply Shell when falling below 50% Health",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
-}
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
+}//CANT DAMGE ONESELF ONLY KILL
 
 const staggering_attack: Lumina = {
     name: "Staggering Attack",
     category: "LUMINA",
     description: "50% increased Break damage on Base Attack.",
     cost: 1,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const stay_marked: Lumina = {
@@ -1643,8 +2202,11 @@ const stay_marked: Lumina = {
     category: "LUMINA",
     description: "50% chance to apply Mark when attacking a Marked target.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_STATUS_EFFECT", target: "ENEMY", status: "mark", turns: 1 }],
+        condition: { kind: "HAS_STATUS_EFFECT", status: "mark" },
+        event: { kind: "ON_ATTACK" }
+    }]
 }
 
 const stun_boost: Lumina = {
@@ -1652,8 +2214,11 @@ const stun_boost: Lumina = {
     category: "LUMINA",
     description: "30% increased damage on Stunned targets.",
     cost: 10,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_DMG", target: "DAMAGE_ADD", dmg: 30 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_STATUS_EFFECT_APPLIED", target: "ENEMY", status: "stun" }
+    }]
 }
 
 const survivor: Lumina = {
@@ -1661,8 +2226,11 @@ const survivor: Lumina = {
     category: "LUMINA",
     description: "Survive fatal damage with 1 Health. Once per battle.",
     cost: 20,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const sweet_kill: Lumina = {
@@ -1670,8 +2238,11 @@ const sweet_kill: Lumina = {
     category: "LUMINA",
     description: "Recover 50% Health on killing an enemy.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const tainted: Lumina = {
@@ -1679,8 +2250,11 @@ const tainted: Lumina = {
     category: "LUMINA",
     description: "15% increased damage for each Status Effect on self.",
     cost: 3,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "TOGGLE_RULE", rule: "tainted" }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const teamwork: Lumina = {
@@ -1688,8 +2262,11 @@ const teamwork: Lumina = {
     category: "LUMINA",
     description: "10% increased damage while all allies are alive.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "ADD_DMG", target: "DAMAGE_MUL", dmg: 10 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_TURN_END" }
+    }]
 }
 
 const the_one: Lumina = {
@@ -1697,8 +2274,11 @@ const the_one: Lumina = {
     category: "LUMINA",
     description: "Max Health is reduced to 1.",
     cost: 1,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "OVR_STAT", stat: "health", ovr: 1 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_START" }
+    }]
 }
 
 const time_tint: Lumina = {
@@ -1706,8 +2286,11 @@ const time_tint: Lumina = {
     category: "LUMINA",
     description: "Energy Tints also apply Rush.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const versatile: Lumina = {
@@ -1715,8 +2298,11 @@ const versatile: Lumina = {
     category: "LUMINA",
     description: "After a Free Aim hit, Base Attack damage is increased by 50% for 1 turn.",
     cost: 5,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 const warming_up: Lumina = {
@@ -1724,17 +2310,23 @@ const warming_up: Lumina = {
     category: "LUMINA",
     description: "5% increased damage per turn. Can stack up to 5 times.",
     cost: 15,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
-}
+    triggers: [{
+        effects: [{ kind: "ADD_DMG", target: "DAMAGE_ADD", dmg: 5 }],
+        condition: { kind: "ALWAYS" },
+        event: { kind: "ON_TURN_START" }
+    }]
+}//WENN MEHRERE TURNS BETRACHTEN ANDERS
 
 const weakness_gain: Lumina = {
     name: "Weakness Gain",
     category: "LUMINA",
     description: "+1AP on hitting an enemy's Weakness. Once per turn.",
     cost: 3,
-    effect: { kind: "NONE" },
-    condition: { kind: "NEVER" }
+    triggers: [{
+        effects: [{ kind: "NONE" }],
+        condition: { kind: "NEVER" },
+        event: { kind: "NEVER" }
+    }]
 }
 
 export const luminas: Array<Lumina> = [
