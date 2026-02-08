@@ -670,17 +670,17 @@ fn scaling_value(s: Scaling) -> f32 {
 //DONT KNOW EXACT SCALING METHOD
 fn apply_attribute_bonuses(base: &CharacterStats, attrs: &CharacterAttributes) -> FinalStats {
     let health = base.health 
-        + attrs.vitality * 10.0;
+        + (attrs.vitality - 1.0) * 10.0;
     let attack_power = base.attack_power
-        + attrs.might * 1.0
-        + attrs.vitality * 0.20;
+        + (attrs.might - 1.0) * 1.0
+        + (attrs.vitality - 1.0) * 0.20;
     let speed = base.speed 
-        + attrs.agility * 0.50;
+        + (attrs.agility - 1.0) * 0.50;
     let defense = base.defense 
-        + attrs.defense * 1.00 
-        + attrs.agility * 0.20;
+        + (attrs.defense - 1.0) * 1.00 
+        + (attrs.agility - 1.0) * 0.20;
     let critical_rate = base.critical_rate 
-        + attrs.luck * 0.50;
+        + (attrs.luck - 1.0) * 0.50;
 
     FinalStats {
         health,
@@ -725,7 +725,6 @@ fn build_entity_from_character(character: &Character, attack: &Attack, weapon: &
 }
 
 pub fn compute_build_damage_from_input(input: BuildInput) -> Result<BuildOutput, JsValue> {
-    // collect luminas (character luminas + picto luminas)
     let mut luminas: Vec<Lumina> = Vec::new();
     luminas.extend(input.luminas.clone());
     for p in &input.pictos {
@@ -735,7 +734,6 @@ pub fn compute_build_damage_from_input(input: BuildInput) -> Result<BuildOutput,
     let mut runtime = build_runtime(luminas);
     let mut player = build_entity_from_character(&input.character, &input.attack, &input.weapon);
 
-    // apply picto attribute buffs to player
     for p in &input.pictos {
         player.stats.health += p.attribute_buff.health;
         player.stats.current_health += p.attribute_buff.health;
@@ -764,14 +762,11 @@ pub fn compute_build_damage_from_input(input: BuildInput) -> Result<BuildOutput,
         was_zero_health: false,
     };
 
-    // damage modifiers
     let mut dmg_add_sum: f32 = 0.0;
     let mut dmg_mul_factor: f32 = 1.0;
 
-    // fixed event order after initialization
     dispatch(&mut runtime, &mut player, &mut enemy, FiredEvent::OnStart, &mut dmg_add_sum, &mut dmg_mul_factor);
     dispatch(&mut runtime, &mut player, &mut enemy, FiredEvent::OnTurnStart, &mut dmg_add_sum, &mut dmg_mul_factor);
-    // check if enough AP to Attack
     if player.stats.ap < 0.0 {
         return Err(JsValue::from_str("NOT ENOUGH AP"));
     }
@@ -779,7 +774,7 @@ pub fn compute_build_damage_from_input(input: BuildInput) -> Result<BuildOutput,
     dispatch(&mut runtime, &mut player, &mut enemy, FiredEvent::OnAttack, &mut dmg_add_sum, &mut dmg_mul_factor);
 
     if enemy.debuffs.get(&DebuffKey::Defenceless).copied().unwrap_or(0.0) > 0.0 {
-        let mut def_bonus = 0.30; //genaues nachgucken
+        let mut def_bonus = 0.25;
         if player.rules.contains(&Rule::GreaterDefenceless) {
             def_bonus += 0.15;
         }
@@ -787,7 +782,7 @@ pub fn compute_build_damage_from_input(input: BuildInput) -> Result<BuildOutput,
     }
 
     if player.buffs.get(&BuffKey::Powerful).copied().unwrap_or(0.0) > 0.0 {
-        let mut pow_bonus = 0.30; //genaues nachgucken
+        let mut pow_bonus = 0.25;
         if player.rules.contains(&Rule::GreaterPowerful) {
             pow_bonus += 0.15;
         }
@@ -812,13 +807,13 @@ pub fn compute_build_damage_from_input(input: BuildInput) -> Result<BuildOutput,
         }
     }
 
-    let weapon_power = input.weapon.power;
+    let weapon_power = input.weapon.power + weapon_scaling_attack_bonus(&input.weapon, &input.character.attributes);
     let attack_power = player.stats.attack_power + weapon_power;
     let skill_multiplier = input.attack.power;
     let crit_factor = 1.0 + (player.stats.critical_rate.min(100.0) / 100.0) * 0.5;
 
     let base_damage = attack_power * skill_multiplier;
-    let mut damage = base_damage * crit_factor * dmg_mul_factor * (1.0 + dmg_add_sum);
+    let mut damage = base_damage * crit_factor * (1.0 + dmg_add_sum) * dmg_mul_factor;
 
     if player.rules.contains(&Rule::FasterThanStronger) {
         damage *= 0.5;
@@ -826,6 +821,10 @@ pub fn compute_build_damage_from_input(input: BuildInput) -> Result<BuildOutput,
 
     if !player.rules.contains(&Rule::ExceedDmgCap) {
         damage = damage.min(9999.0);
+    }
+
+    if player.stats.current_health == 0.0 {
+        damage = 0.0;
     }
 
     damage *= player.stats.hits;
