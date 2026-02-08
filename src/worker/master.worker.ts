@@ -133,7 +133,7 @@ self.onmessage = async (ev: MessageEvent<MasterReq>) => {
     }
 
     if (msg.type === "compute_build_damage") {
-      const out = (wasm as any).compute_build_damage(msg.input);
+      const out = (wasm as any).get_build_damage(msg.input);
       const res: MasterRes = { id: msg.id, ok: true, result: out };
       self.postMessage(res);
       return;

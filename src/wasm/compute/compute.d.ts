@@ -1,13 +1,13 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export function compute_build_damage(input: any): any;
+export function get_build_damage(input: any): any;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
-  readonly compute_build_damage: (a: any) => [number, number, number];
+  readonly get_build_damage: (a: any) => [number, number, number];
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __wbindgen_exn_store: (a: number) => void;

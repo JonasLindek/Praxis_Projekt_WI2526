@@ -186,8 +186,8 @@ let WASM_VECTOR_LEN = 0;
  * @param {any} input
  * @returns {any}
  */
-export function compute_build_damage(input) {
-    const ret = wasm.compute_build_damage(input);
+export function get_build_damage(input) {
+    const ret = wasm.get_build_damage(input);
     if (ret[2]) {
         throw takeFromExternrefTable0(ret[1]);
     }
